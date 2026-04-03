@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Header } from "@/components/Header";
 
 export const metadata: Metadata = {
-  title: "My Portfolio | Full-Stack Developer",
-  description: "Portfolio of a Full-Stack Developer focused on scalable solutions.",
+  title: "Meu Portfólio | Desenvolvedor Full-Stack",
+  description: "Desenvolvedor Full-Stack focado em soluções escaláveis.",
 };
 
 export default function RootLayout({
@@ -13,8 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className="bg-zinc-950 text-zinc-50 antialiased">
-        {children}
+      <body className="bg-brand-bg text-brand-text antialiased">
+        <Header />
+        <main>{children}</main>
       </body>
     </html>
   );
