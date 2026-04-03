@@ -6,3 +6,7 @@
   --color-brand-muted: #a1a1aa;
   --color-brand-primary: #ef4444;
 }
+
+body {
+  font-family: var(--font-outfit), sans-serif;
+}
