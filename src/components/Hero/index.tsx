@@ -32,7 +32,7 @@ export const Hero = () => {
       <div className="absolute bottom-0 right-0 z-0 h-[65%] md:h-[85%] lg:h-[95%] flex items-end justify-end pointer-events-none opacity-20 md:opacity-100">
         <Image
           src="/profile.png"
-          alt="Foto de perfil de Nielson Gomes"
+          alt="Foto de perfil"
           width={819}
           height={1229}
           className="w-auto h-full object-contain object-bottom-right drop-shadow-xl"
