@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ProfilePhoto } from "@/components/ProfilePhoto";
 
 export const Hero = () => {
   return (
@@ -30,14 +30,11 @@ export const Hero = () => {
       </div>
 
       <div className="absolute bottom-0 right-0 z-0 h-[65%] md:h-[85%] lg:h-[95%] flex items-end justify-end pointer-events-none opacity-20 md:opacity-100">
-        <Image
-          src="/profile.png"
-          alt="Foto de perfil"
-          width={819}
-          height={1229}
-          className="w-auto h-full object-contain object-bottom-right drop-shadow-xl"
-          priority
+        <ProfilePhoto
+          wrapperClassName="h-full"
+          imageClassName="left-auto right-0 object-bottom-right drop-shadow-xl"
         />
+
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-brand-primary/6 blur-2xl -z-10 rounded-full mix-blend-screen" />
       </div>
     </section>
