@@ -57,8 +57,7 @@ export const About = () => {
             <div className="flex flex-col gap-4 text-brand-muted text-base md:text-lg leading-relaxed">
               <p>
                 Mais do que linhas de código, construo soluções focadas em
-                <span className="text-white/90"> arquitetura</span>,
-                <span className="text-white/90"> escalabilidade</span> e clareza.
+                 arquitetura escalabilidade e clareza.
               </p>
               <p>
                 Integro a IA como parceira estratégica no dia a dia para acelerar testes, refatorações e debugs, mantendo qualidade e consistência na entrega.
