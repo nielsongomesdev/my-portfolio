@@ -6,7 +6,7 @@ export const Sidebar = () => {
     <nav
       className="fixed z-50 bg-black/40 backdrop-blur-md border border-white/10 rounded-full flex 
         bottom-6 left-1/2 -translate-x-1/2 flex-row w-[90%] max-w-[320px] justify-between px-6 py-4 
-        md:bottom-auto md:left-auto md:translate-x-0 md:right-4 md:top-[1/2] md:-translate-y-1/2 md:flex-col md:w-auto md:px-4 md:py-6 md:gap-8">
+        md:bottom-auto md:left-auto md:translate-x-0 md:right-10 md:top-[40%] md:-translate-y-1/2 md:flex-col md:w-auto md:px-4 md:py-6 md:gap-8">
 
       <Link
         href="/"
