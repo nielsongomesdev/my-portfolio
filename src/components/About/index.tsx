@@ -106,7 +106,7 @@ export const About = () => {
                 icons={[
                   { label: "Git", icon: <FaGitAlt size={26} key="git" /> },
                   { label: "GitLab", icon: <SiGitlab size={24} key="gitlab" /> },
-                  { label: "Pipeline", icon: <FaCodeBranch size={24} key="pipeline" /> },
+                  { label: "CI/CD", icon: <FaCodeBranch size={24} key="pipeline" /> },
                   { label: "Docker", icon: <FaDocker size={26} key="docker" /> }
                 ]} 
               />
