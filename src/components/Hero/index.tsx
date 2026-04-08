@@ -1,4 +1,4 @@
-import { ProfilePhoto } from "@/components/ProfilePhoto";
+import { ProfilePhoto } from "@/components";
 
 export const Hero = () => {
   return (
