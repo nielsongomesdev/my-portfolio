@@ -1,6 +1,6 @@
-import { ProfilePhoto } from "@/components/ProfilePhoto";
-import { FaReact, FaNodeJs, FaGitAlt, FaHtml5, FaCss3Alt, FaJava, FaFigma, FaDocker } from "react-icons/fa";
-import { SiNextdotjs, SiTailwindcss, SiTypescript, SiJavascript, SiExpress, SiFastify, SiPrisma, SiPostgresql, SiMongodb, SiSpring } from "react-icons/si";
+import { ProfilePhoto } from "@/components";
+import { FaReact, FaNodeJs, FaGitAlt, FaHtml5, FaCss3Alt, FaJava, FaFigma, FaDocker, FaCodeBranch } from "react-icons/fa";
+import { SiNextdotjs, SiTailwindcss, SiTypescript, SiJavascript, SiExpress, SiFastify, SiPrisma, SiPostgresql, SiMongodb, SiSpring, SiGitlab } from "react-icons/si";
 
 const SkillRow = ({
   title,
@@ -105,6 +105,8 @@ export const About = () => {
                 title="Ferramentas:" 
                 icons={[
                   { label: "Git", icon: <FaGitAlt size={26} key="git" /> },
+                  { label: "GitLab", icon: <SiGitlab size={24} key="gitlab" /> },
+                  { label: "Pipeline", icon: <FaCodeBranch size={24} key="pipeline" /> },
                   { label: "Docker", icon: <FaDocker size={26} key="docker" /> }
                 ]} 
               />
