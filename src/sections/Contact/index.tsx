@@ -1,6 +1,10 @@
+"use client";
+import { useState } from "react";
+import { ContactForm } from "./ContactForm";
+import { SuccessModal } from "./SuccessModal";
+
 export const Contact = () => {
-  const inputClasses =
-    "w-full bg-transparent border border-white/10 rounded-lg p-4 text-white placeholder:text-white/40 focus:outline-none transition-all duration-300 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary";
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <section
@@ -12,28 +16,10 @@ export const Contact = () => {
           Fale <span className="text-brand-primary">comigo</span>
         </h2>
 
-        <form className="w-full flex flex-col gap-4">
-          <div className="flex flex-col md:flex-row gap-4">
-            <input type="text" placeholder="Nome" className={inputClasses} />
-            <input type="email" placeholder="Email" className={inputClasses} />
-          </div>
-
-          <input type="text" placeholder="Assunto" className={inputClasses} />
-
-          <textarea
-            rows={6}
-            placeholder="Mensagem"
-            className={`${inputClasses} resize-none`}
-          />
-
-          <button
-            type="button"
-            className="mt-2 self-start px-10 py-3 rounded-full border border-white/20 text-white hover:bg-brand-primary hover:border-brand-primary transition-all duration-300 active:scale-95"
-          >
-            Enviar
-          </button>
-        </form>
+        <ContactForm onSuccess={() => setShowModal(true)} />
       </div>
+
+      <SuccessModal isOpen={showModal} onClose={() => setShowModal(false)} />
     </section>
   );
 };
