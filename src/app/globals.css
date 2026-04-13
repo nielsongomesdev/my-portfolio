@@ -5,6 +5,8 @@
   --color-brand-text: #fafafa;
   --color-brand-muted: #a1a1aa;
   --color-brand-primary: #ef4444;
+  --color-cosmic-bg-near-black: #0a0c10;
+  --color-cosmic-bg-deep-indigo: #1a1c36;
 }
 
 body {

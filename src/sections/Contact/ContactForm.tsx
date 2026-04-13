@@ -1,14 +1,13 @@
-import React, { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
+import React, { useState } from "react";
 
 interface ContactFormProps {
   onSuccess: () => void;
 }
 
 export const ContactForm = ({ onSuccess }: ContactFormProps) => {
-  const form = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const getInputClasses = (fieldName: string) => {
     const baseClasses =
@@ -28,10 +27,12 @@ export const ContactForm = ({ onSuccess }: ContactFormProps) => {
     }
   };
 
-  const sendEmail = (e: Parameters<NonNullable<React.ComponentProps<"form">["onSubmit"]>>[0]) => {
+  const sendEmail = async (e: Parameters<NonNullable<React.ComponentProps<"form">["onSubmit"]>>[0]) => {
     e.preventDefault();
+    if (isSubmitting) return;
 
-    const formData = new FormData(e.currentTarget);
+    const formElement = e.currentTarget;
+    const formData = new FormData(formElement);
     const newErrors: Record<string, string> = {};
 
     const email = formData.get("user_email") as string;
@@ -54,31 +55,43 @@ export const ContactForm = ({ onSuccess }: ContactFormProps) => {
     }
 
     setErrors({});
-    if (!form.current) return;
-
+    setSubmitError(null);
     setIsSubmitting(true);
+    try {
+      const payload = {
+        name: String(formData.get("user_name") || "").trim(),
+        email: String(formData.get("user_email") || "").trim(),
+        message: String(formData.get("message") || "").trim(),
+        subject: String(formData.get("subject") || "").trim(),
+      };
 
-    const SERVICE_ID = "service_7t2smgc";
-    const TEMPLATE_ID = "template_8f70oiq";
-    const PUBLIC_KEY = "yMJ7ieaIhjPizDjb7";
-
-    emailjs
-      .sendForm(SERVICE_ID, TEMPLATE_ID, form.current, { publicKey: PUBLIC_KEY })
-      .then(
-        () => {
-          onSuccess();
-          form.current?.reset();
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        (error) => {
-          console.error("FAILED...", error.text);
-          alert("Erro ao enviar mensagem. Tente novamente mais tarde.");
-        }
-      )
-      .finally(() => setIsSubmitting(false));
+        body: JSON.stringify(payload),
+      });
+
+      const data = (await response.json().catch(() => null)) as { message?: string } | null;
+
+      if (!response.ok) {
+        throw new Error(data?.message || "Erro ao enviar mensagem.");
+      }
+
+      onSuccess();
+      formElement.reset();
+    } catch (error) {
+      console.error("Falha ao enviar contato:", error);
+      const message = error instanceof Error ? error.message : "Erro ao enviar mensagem. Tente novamente mais tarde.";
+      setSubmitError(message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <form ref={form} onSubmit={sendEmail} noValidate className="w-full flex flex-col gap-4">
+    <form onSubmit={sendEmail} noValidate className="w-full flex flex-col gap-4">
       <div className="flex flex-col md:flex-row gap-4">
         <div className="w-full flex flex-col gap-1">
           <input
@@ -156,6 +169,12 @@ export const ContactForm = ({ onSuccess }: ContactFormProps) => {
       >
         {isSubmitting ? "Enviando..." : "Enviar"}
       </button>
+
+      {submitError && (
+        <p aria-live="polite" className="text-sm text-brand-primary mt-1">
+          {submitError}
+        </p>
+      )}
     </form>
   );
 };
