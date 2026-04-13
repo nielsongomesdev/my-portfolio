@@ -1,1 +1,36 @@
 @import "tailwindcss";
+
+@theme {
+  --color-brand-bg: #09090b;
+  --color-brand-text: #fafafa;
+  --color-brand-muted: #a1a1aa;
+  --color-brand-primary: #ef4444;
+  --color-cosmic-bg-near-black: #0a0c10;
+  --color-cosmic-bg-deep-indigo: #1a1c36;
+}
+
+body {
+  font-family: var(--font-outfit), sans-serif;
+}
+
+html,
+body,
+main {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}

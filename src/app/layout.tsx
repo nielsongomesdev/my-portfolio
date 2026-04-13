@@ -1,10 +1,24 @@
 import type { Metadata } from "next";
+import { Outfit } from "next/font/google";
 import "./globals.css";
 
-export const metadata: Metadata = {
-  title: "My Portfolio | Full-Stack Developer",
-  description: "Portfolio of a Full-Stack Developer focused on scalable solutions.",
-};
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+});
+
+export function generateMetadata(): Metadata {
+  return {
+    metadataBase: new URL("http://localhost:3000"),
+    alternates: {
+      canonical: "/",
+      languages: {
+        en: "/",
+        pt: "/pt",
+      },
+    },
+  };
+}
 
 export default function RootLayout({
   children,
@@ -12,8 +26,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
-      <body className="bg-zinc-950 text-zinc-50 antialiased">
+    <html lang="en" className="overflow-x-hidden">
+      <body
+        className={`${outfit.variable} bg-cosmic-bg-near-black text-brand-text antialiased relative overflow-x-hidden`}
+      >
         {children}
       </body>
     </html>
