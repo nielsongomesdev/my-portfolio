@@ -1,6 +1,9 @@
+"use client";
+
 import { ProfilePhoto } from "@/components";
 import { FaReact, FaNodeJs, FaGitAlt, FaHtml5, FaCss3Alt, FaJava, FaFigma, FaDocker, FaCodeBranch } from "react-icons/fa";
 import { SiNextdotjs, SiTailwindcss, SiTypescript, SiJavascript, SiExpress, SiFastify, SiPrisma, SiPostgresql, SiMongodb, SiSpring, SiGitlab } from "react-icons/si";
+import { useTranslations } from "next-intl";
 
 const SkillRow = ({
   title,
@@ -41,6 +44,14 @@ interface AboutProps {
 }
 
 export const About = ({ showProfilePhoto = true }: AboutProps) => {
+  const t = useTranslations("about");
+  const softSkills = [
+    t("softSkills.teamwork"),
+    t("softSkills.criticalThinking"),
+    t("softSkills.fastLearning"),
+    t("softSkills.empathy"),
+  ];
+
   return (
     <section className="relative min-h-screen w-full flex items-start lg:items-center overflow-x-hidden pt-28 pb-28 lg:py-20">
       {showProfilePhoto && (
@@ -57,27 +68,20 @@ export const About = ({ showProfilePhoto = true }: AboutProps) => {
         <div className="flex flex-col lg:flex-row items-start gap-12 lg:gap-16 xl:gap-24 w-full md:w-[90%] lg:w-[85%] xl:w-[80%]">
           <div className="flex-1 flex flex-col gap-6 lg:mt-16 w-full">
             <h2 className="text-3xl md:text-5xl font-bold text-white text-left">
-              Sobre <span className="text-brand-primary">mim</span>
+              {t("title")} <span className="text-brand-primary">{t("titleAccent")}</span>
             </h2>
 
             <div className="flex flex-col gap-4 text-brand-muted text-base md:text-lg leading-relaxed">
-              <p>
-                Mais do que linhas de código, construo soluções focadas em
-                arquitetura escalabilidade e clareza.
-              </p>
-              <p>
-                Integro a IA como parceira estratégica no dia a dia para acelerar testes, refatorações e debugs, mantendo qualidade e consistência na entrega.
-              </p>
-              <p>
-                Fora das telas, sou movido pela calma. É no silêncio da natureza ou acompanhando um bom anime que recarrego minha energia.
-              </p>
+              <p>{t("paragraph1")}</p>
+              <p>{t("paragraph2")}</p>
+              <p>{t("paragraph3")}</p>
             </div>
           </div>
 
           <div className="flex-1 flex flex-col gap-10 lg:mt-16 w-full">
-            <h3 className="text-white font-semibold mb-1 sm:-mb-2 sm:ml-32.5 text-left">Hard Skills</h3>
+            <h3 className="text-white font-semibold mb-1 sm:-mb-2 sm:ml-32.5 text-left">{t("hardSkillsTitle")}</h3>
             <SkillRow
-              title="Front-End:"
+              title={t("hardSkills.frontend")}
               icons={[
                 { label: "HTML5", icon: <FaHtml5 size={26} key="html" /> },
                 { label: "CSS3", icon: <FaCss3Alt size={26} key="css" /> },
@@ -89,11 +93,11 @@ export const About = ({ showProfilePhoto = true }: AboutProps) => {
               ]}
             />
             <SkillRow
-              title="Design UI/UX:"
+              title={t("hardSkills.uiux")}
               icons={[{ label: "Figma", icon: <FaFigma size={26} key="figma" /> }]}
             />
             <SkillRow
-              title="Back-End:"
+              title={t("hardSkills.backend")}
               icons={[
                 { label: "Node.js", icon: <FaNodeJs size={26} key="node" /> },
                 { label: "Express", icon: <SiExpress size={25} key="express" /> },
@@ -106,7 +110,7 @@ export const About = ({ showProfilePhoto = true }: AboutProps) => {
               ]}
             />
             <SkillRow
-              title="Ferramentas:"
+              title={t("hardSkills.tools")}
               icons={[
                 { label: "Git", icon: <FaGitAlt size={26} key="git" /> },
                 { label: "GitLab", icon: <SiGitlab size={24} key="gitlab" /> },
@@ -116,12 +120,11 @@ export const About = ({ showProfilePhoto = true }: AboutProps) => {
             />
 
             <div className="flex flex-col gap-3 sm:gap-4">
-              <h3 className="text-white font-semibold sm:ml-32.5 text-left">Soft Skills</h3>
+              <h3 className="text-white font-semibold sm:ml-32.5 text-left">{t("softSkillsTitle")}</h3>
               <div className="grid grid-cols-2 gap-2 sm:gap-3 sm:ml-32.5 w-full max-w-75 sm:max-w-none sm:w-max">
-                <SoftSkillTag text="Trabalho em Equipe" />
-                <SoftSkillTag text="Pensamento Crítico" />
-                <SoftSkillTag text="Aprendizado Rápido" />
-                <SoftSkillTag text="Empatia" />
+                {softSkills.map((skill) => (
+                  <SoftSkillTag key={skill} text={skill} />
+                ))}
               </div>
             </div>
           </div>

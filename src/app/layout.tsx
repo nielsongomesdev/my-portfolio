@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
-import { Header, Sidebar, CosmicBackground } from "@/components";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -9,8 +8,8 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Meu Portfólio | Desenvolvedor Full-Stack",
-  description: "Desenvolvedor Full-Stack focado em soluções escaláveis.",
+  title: "Portfolio | Full-Stack Developer",
+  description: "Full-Stack Developer focused on scalable solutions.",
 };
 
 export default function RootLayout({
@@ -19,15 +18,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className="overflow-x-hidden">
+    <html lang="en" className="overflow-x-hidden">
       <body
         className={`${outfit.variable} bg-cosmic-bg-near-black text-brand-text antialiased relative overflow-x-hidden`}
       >
-        <CosmicBackground />
-
-        <Header />
-        <Sidebar />
-        <main>{children}</main>
+        {children}
       </body>
     </html>
   );

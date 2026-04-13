@@ -1,0 +1,75 @@
+{
+  "header": {
+    "name": "Nielson Gomes",
+    "switch": "EN",
+    "switchAria": "Trocar idioma"
+  },
+  "sidebar": {
+    "home": "Home",
+    "about": "Sobre Mim",
+    "projects": "Projetos",
+    "contact": "Contato"
+  },
+  "hero": {
+    "titleLine1": "Desenvolvedor",
+    "titleLine2": "Full <highlight>Stack</highlight>",
+    "description": "Focado em criar soluções escaláveis, performáticas e com uma excelente experiência de usuário. Transformo ideias em soluções digitais.",
+    "downloadCv": "Baixar CV"
+  },
+  "about": {
+    "title": "Sobre",
+    "titleAccent": "mim",
+    "paragraph1": "Mais do que linhas de código, construo soluções focadas em arquitetura, escalabilidade e clareza.",
+    "paragraph2": "Integro a IA como parceira estratégica no dia a dia para acelerar testes, refatorações e debugs, mantendo qualidade e consistência na entrega.",
+    "paragraph3": "Fora das telas, sou movido pela calma. É no silêncio da natureza ou acompanhando um bom anime que recarrego minha energia.",
+    "hardSkillsTitle": "Hard Skills",
+    "hardSkills": {
+      "frontend": "Front-End:",
+      "uiux": "Design UI/UX:",
+      "backend": "Back-End:",
+      "tools": "Ferramentas:"
+    },
+    "softSkillsTitle": "Soft Skills",
+    "softSkills": {
+      "teamwork": "Trabalho em Equipe",
+      "criticalThinking": "Pensamento Crítico",
+      "fastLearning": "Aprendizado Rápido",
+      "empathy": "Empatia"
+    }
+  },
+  "projects": {
+    "title": "Meus",
+    "titleAccent": "projetos",
+    "description": "Alguns dos projetos que desenvolvi aplicando meus conhecimentos na prática.",
+    "private": "Privado",
+    "live": "Live"
+  },
+  "contact": {
+    "title": "Fale",
+    "titleAccent": "comigo",
+    "form": {
+      "placeholders": {
+        "name": "Nome",
+        "email": "Email",
+        "subject": "Assunto",
+        "message": "Mensagem"
+      },
+      "send": "Enviar",
+      "sending": "Enviando...",
+      "errors": {
+        "nameRequired": "Por favor, informe seu nome.",
+        "emailRequired": "Por favor, informe seu e-mail.",
+        "emailInvalid": "Informe um e-mail válido.",
+        "subjectRequired": "Por favor, informe o assunto.",
+        "messageRequired": "A mensagem não pode estar vazia.",
+        "submit": "Erro ao enviar mensagem.",
+        "submitLater": "Erro ao enviar mensagem. Tente novamente mais tarde."
+      }
+    },
+    "successModal": {
+      "title": "Mensagem enviada!",
+      "description": "Obrigado por entrar em contato. Retornarei o mais breve possível!",
+      "close": "Fechar"
+    }
+  }
+}

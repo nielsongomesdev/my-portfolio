@@ -1,7 +1,12 @@
+"use client";
+
 import { Home, User, FolderGit2, Mail } from "lucide-react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 export const Sidebar = () => {
+  const t = useTranslations("sidebar");
+
   return (
     <nav
       className="fixed z-50 bg-black/40 backdrop-blur-md border border-white/10 rounded-full flex 
@@ -10,44 +15,44 @@ export const Sidebar = () => {
 
       <Link
         href="/"
-        aria-label="Home"
+        aria-label={t("home")}
         className="relative group text-brand-muted hover:text-brand-primary active:text-brand-primary transition active:scale-95 focus-visible:text-brand-primary focus-visible:outline-none flex items-center justify-center touch-manipulation"
       >
         <Home size={22} />
         <span className="hidden md:block absolute right-full mr-5 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-black/80 backdrop-blur-md border border-white/10 text-white text-xs font-medium rounded-md opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap">
-          Home
+          {t("home")}
         </span>
       </Link>
 
       <Link
         href="/about"
-        aria-label="Sobre Mim"
+        aria-label={t("about")}
         className="relative group text-brand-muted hover:text-brand-primary active:text-brand-primary transition active:scale-95 focus-visible:text-brand-primary focus-visible:outline-none flex items-center justify-center touch-manipulation">
         <User size={22} />
         <span className="hidden md:block absolute right-full mr-5 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-black/80 backdrop-blur-md border border-white/10 text-white text-xs font-medium rounded-md opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap">
-          Sobre Mim
+          {t("about")}
         </span>
       </Link>
 
       <Link
         href="/projects"
-        aria-label="Projetos"
+        aria-label={t("projects")}
         className="relative group text-brand-muted hover:text-brand-primary active:text-brand-primary transition active:scale-95 focus-visible:text-brand-primary focus-visible:outline-none flex items-center justify-center touch-manipulation"
       >
         <FolderGit2 size={22} />
         <span className="hidden md:block absolute right-full mr-5 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-black/80 backdrop-blur-md border border-white/10 text-white text-xs font-medium rounded-md opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap">
-          Projetos
+          {t("projects")}
         </span>
       </Link>
 
       <Link
         href="/contact"
-        aria-label="Contato"
+        aria-label={t("contact")}
         className="relative group text-brand-muted hover:text-brand-primary active:text-brand-primary transition active:scale-95 focus-visible:text-brand-primary focus-visible:outline-none flex items-center justify-center touch-manipulation"
       >
         <Mail size={22} />
         <span className="hidden md:block absolute right-full mr-5 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-black/80 backdrop-blur-md border border-white/10 text-white text-xs font-medium rounded-md opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap">
-          Contato
+          {t("contact")}
         </span>
       </Link>
     </nav>

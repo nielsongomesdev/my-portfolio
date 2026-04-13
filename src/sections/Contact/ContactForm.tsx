@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useTranslations } from "next-intl";
 
 interface ContactFormProps {
   onSuccess: () => void;
 }
 
 export const ContactForm = ({ onSuccess }: ContactFormProps) => {
+  const t = useTranslations("contact.form");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -38,16 +40,16 @@ export const ContactForm = ({ onSuccess }: ContactFormProps) => {
     const email = formData.get("user_email") as string;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!formData.get("user_name")) newErrors.user_name = "Por favor, informe seu nome.";
+    if (!formData.get("user_name")) newErrors.user_name = t("errors.nameRequired");
 
     if (!email) {
-      newErrors.user_email = "Por favor, informe seu e-mail.";
+      newErrors.user_email = t("errors.emailRequired");
     } else if (!emailRegex.test(email)) {
-      newErrors.user_email = "Informe um e-mail válido.";
+      newErrors.user_email = t("errors.emailInvalid");
     }
 
-    if (!formData.get("subject")) newErrors.subject = "Por favor, informe o assunto.";
-    if (!formData.get("message")) newErrors.message = "A mensagem não pode estar vazia.";
+    if (!formData.get("subject")) newErrors.subject = t("errors.subjectRequired");
+    if (!formData.get("message")) newErrors.message = t("errors.messageRequired");
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -65,7 +67,7 @@ export const ContactForm = ({ onSuccess }: ContactFormProps) => {
         subject: String(formData.get("subject") || "").trim(),
       };
 
-      const response = await fetch("/api/contact", {
+      const response = await fetch("/api", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -76,14 +78,14 @@ export const ContactForm = ({ onSuccess }: ContactFormProps) => {
       const data = (await response.json().catch(() => null)) as { message?: string } | null;
 
       if (!response.ok) {
-        throw new Error(data?.message || "Erro ao enviar mensagem.");
+        throw new Error(data?.message || t("errors.submit"));
       }
 
       onSuccess();
       formElement.reset();
     } catch (error) {
       console.error("Falha ao enviar contato:", error);
-      const message = error instanceof Error ? error.message : "Erro ao enviar mensagem. Tente novamente mais tarde.";
+      const message = error instanceof Error ? error.message : t("errors.submitLater");
       setSubmitError(message);
     } finally {
       setIsSubmitting(false);
@@ -97,7 +99,7 @@ export const ContactForm = ({ onSuccess }: ContactFormProps) => {
           <input
             type="text"
             name="user_name"
-            placeholder="Nome"
+            placeholder={t("placeholders.name")}
             onChange={handleInputChange}
             aria-invalid={Boolean(errors.user_name)}
             aria-describedby={errors.user_name ? "user_name-error" : undefined}
@@ -114,7 +116,7 @@ export const ContactForm = ({ onSuccess }: ContactFormProps) => {
           <input
             type="email"
             name="user_email"
-            placeholder="Email"
+            placeholder={t("placeholders.email")}
             onChange={handleInputChange}
             aria-invalid={Boolean(errors.user_email)}
             aria-describedby={errors.user_email ? "user_email-error" : undefined}
@@ -132,7 +134,7 @@ export const ContactForm = ({ onSuccess }: ContactFormProps) => {
         <input
           type="text"
           name="subject"
-          placeholder="Assunto"
+          placeholder={t("placeholders.subject")}
           onChange={handleInputChange}
           aria-invalid={Boolean(errors.subject)}
           aria-describedby={errors.subject ? "subject-error" : undefined}
@@ -149,7 +151,7 @@ export const ContactForm = ({ onSuccess }: ContactFormProps) => {
         <textarea
           name="message"
           rows={6}
-          placeholder="Mensagem"
+          placeholder={t("placeholders.message")}
           onChange={handleInputChange}
           aria-invalid={Boolean(errors.message)}
           aria-describedby={errors.message ? "message-error" : undefined}
@@ -167,7 +169,7 @@ export const ContactForm = ({ onSuccess }: ContactFormProps) => {
         disabled={isSubmitting}
         className="mt-2 self-start px-10 py-3 rounded-full border border-white/20 text-white hover:bg-brand-primary hover:border-brand-primary transition-all duration-300 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {isSubmitting ? "Enviando..." : "Enviar"}
+        {isSubmitting ? t("sending") : t("send")}
       </button>
 
       {submitError && (
