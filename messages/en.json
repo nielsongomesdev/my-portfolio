@@ -1,0 +1,75 @@
+{
+  "header": {
+    "name": "Nielson Gomes",
+    "switch": "PT",
+    "switchAria": "Switch language"
+  },
+  "sidebar": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "titleLine1": "Full <highlight>Stack</highlight>",
+    "titleLine2": "Developer",
+    "description": "Focused on building scalable, high-performance solutions with an excellent user experience. I transform ideas into digital products.",
+    "downloadCv": "Download CV"
+  },
+  "about": {
+    "title": "About",
+    "titleAccent": "me",
+    "paragraph1": "More than lines of code, I build solutions focused on architecture, scalability, and clarity.",
+    "paragraph2": "I use AI as a strategic partner in my daily workflow to speed up testing, refactoring, and debugging while keeping quality and consistency high.",
+    "paragraph3": "Outside the screen, calm keeps me grounded. In nature or watching a good anime, I recharge my energy.",
+    "hardSkillsTitle": "Hard Skills",
+    "hardSkills": {
+      "frontend": "Front-End:",
+      "uiux": "UI/UX Design:",
+      "backend": "Back-End:",
+      "tools": "Tools:"
+    },
+    "softSkillsTitle": "Soft Skills",
+    "softSkills": {
+      "teamwork": "Teamwork",
+      "criticalThinking": "Critical Thinking",
+      "fastLearning": "Fast Learning",
+      "empathy": "Empathy"
+    }
+  },
+  "projects": {
+    "title": "My",
+    "titleAccent": "projects",
+    "description": "Some projects I built by applying my skills in real-world scenarios.",
+    "private": "Private",
+    "live": "Live"
+  },
+  "contact": {
+    "title": "Contact",
+    "titleAccent": "me",
+    "form": {
+      "placeholders": {
+        "name": "Name",
+        "email": "Email",
+        "subject": "Subject",
+        "message": "Message"
+      },
+      "send": "Send",
+      "sending": "Sending...",
+      "errors": {
+        "nameRequired": "Please enter your name.",
+        "emailRequired": "Please enter your email.",
+        "emailInvalid": "Please enter a valid email.",
+        "subjectRequired": "Please enter a subject.",
+        "messageRequired": "Message cannot be empty.",
+        "submit": "Error sending message.",
+        "submitLater": "Error sending message. Please try again later."
+      }
+    },
+    "successModal": {
+      "title": "Message sent!",
+      "description": "Thanks for getting in touch. I will reply as soon as possible!",
+      "close": "Close"
+    }
+  }
+}

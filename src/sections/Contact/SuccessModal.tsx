@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 
 interface SuccessModalProps {
   isOpen: boolean;
@@ -6,6 +7,7 @@ interface SuccessModalProps {
 }
 
 export const SuccessModal = ({ isOpen, onClose }: SuccessModalProps) => {
+  const t = useTranslations("contact.successModal");
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const lastFocusedElementRef = useRef<HTMLElement | null>(null);
 
@@ -47,16 +49,16 @@ export const SuccessModal = ({ isOpen, onClose }: SuccessModalProps) => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
           </svg>
         </div>
-        <h3 id="contact-success-title" className="text-2xl font-bold text-white mb-2">Mensagem enviada!</h3>
+        <h3 id="contact-success-title" className="text-2xl font-bold text-white mb-2">{t("title")}</h3>
         <p id="contact-success-description" className="text-white/60 mb-8">
-          Obrigado por entrar em contato. Retornarei o mais breve possível!
+          {t("description")}
         </p>
         <button
           ref={closeButtonRef}
           onClick={onClose}
           className="w-full py-3 px-6 bg-brand-primary text-white rounded-full font-medium hover:brightness-110 transition-all duration-300 active:scale-95"
         >
-          Fechar
+          {t("close")}
         </button>
       </div>
     </div>

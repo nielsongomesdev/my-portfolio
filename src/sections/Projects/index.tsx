@@ -1,18 +1,23 @@
+"use client";
+
 import { ExternalLink, Lock, Key } from "lucide-react";
 import { FiGithub } from "react-icons/fi";
 import Image from "next/image";
 import { projectsData } from "@/data";
+import { useTranslations } from "next-intl";
 
 export const Projects = () => {
+  const t = useTranslations("projects");
+
   return (
     <section id="projects" className="relative w-full flex items-center min-h-screen lg:h-screen pt-28 pb-12 lg:py-0 overflow-hidden z-10">
       <div className="max-w-7xl w-full mx-auto px-6 md:px-12 flex flex-col lg:flex-row lg:items-center justify-between gap-12 lg:gap-8">
         <div className="lg:w-[35%] flex flex-col z-20">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Meus <span className="text-brand-primary">projetos</span>
+            {t("title")} <span className="text-brand-primary">{t("titleAccent")}</span>
           </h2>
           <p className="text-brand-muted text-base md:text-lg leading-relaxed">
-            Alguns dos projetos que desenvolvi aplicando meus conhecimentos na prática.
+            {t("description")}
           </p>
         </div>
         <div className="lg:w-[55%] flex lg:grid lg:grid-cols-2 gap-4 lg:gap-6 w-full overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none pb-8 lg:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
@@ -52,7 +57,7 @@ export const Projects = () => {
                   <div className="flex items-center gap-3 lg:gap-2">
                     {project.isPrivate ? (
                       <div className="flex items-center gap-1.5 px-3 lg:px-2.5 py-1.5 bg-white/5 border border-white/10 rounded-lg text-brand-muted cursor-not-allowed transition-colors">
-                        <Lock className="w-3.5 h-3.5" /> <span className="text-[13px] lg:text-xs font-medium">Privado</span>
+                        <Lock className="w-3.5 h-3.5" /> <span className="text-[13px] lg:text-xs font-medium">{t("private")}</span>
                       </div>
                     ) : (
                       <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 px-3 lg:px-2.5 py-1.5 bg-white/10 hover:bg-brand-primary rounded-lg text-white transition-colors">
@@ -60,7 +65,7 @@ export const Projects = () => {
                       </a>
                     )}
                     <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 px-3 lg:px-2.5 py-1.5 bg-brand-primary hover:bg-brand-primary/80 rounded-lg text-white transition-colors">
-                      <ExternalLink className="w-3.5 h-3.5" /> <span className="text-[13px] lg:text-xs font-medium">Live</span>
+                      <ExternalLink className="w-3.5 h-3.5" /> <span className="text-[13px] lg:text-xs font-medium">{t("live")}</span>
                     </a>
                   </div>
                 </div>
