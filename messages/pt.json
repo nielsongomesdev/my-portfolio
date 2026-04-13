@@ -71,5 +71,9 @@
       "description": "Obrigado por entrar em contato. Retornarei o mais breve possível!",
       "close": "Fechar"
     }
+  },
+  "metadata": {
+    "title": "Nielson Gomes | Desenvolvedor Full Stack",
+    "description": "Portfólio de Nielson Gomes, Desenvolvedor Full Stack focado em criar soluções web escaláveis e de alta performance. Explore meus projetos e habilidades."
   }
 }
