@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
-import { Header, Sidebar } from "@/components";
+import { Header, Sidebar, CosmicBackground } from "@/components";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -21,8 +21,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="overflow-x-hidden">
       <body
-        className={`${outfit.variable} bg-brand-bg text-brand-text antialiased relative overflow-x-hidden`}
+        className={`${outfit.variable} bg-cosmic-bg-near-black text-brand-text antialiased relative overflow-x-hidden`}
       >
+        <CosmicBackground />
+
         <Header />
         <Sidebar />
         <main>{children}</main>

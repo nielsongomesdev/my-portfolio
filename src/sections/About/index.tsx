@@ -36,16 +36,22 @@ const SoftSkillTag = ({ text }: { text: string }) => (
   </div>
 );
 
-export const About = () => {
+interface AboutProps {
+  showProfilePhoto?: boolean;
+}
+
+export const About = ({ showProfilePhoto = true }: AboutProps) => {
   return (
     <section className="relative min-h-screen w-full flex items-start lg:items-center overflow-x-hidden pt-28 pb-28 lg:py-20">
-      <div className="absolute bottom-0 left-0 z-0 h-[40%] sm:h-[50%] md:h-[60%] lg:h-[75%] xl:h-[85%] hidden md:flex items-end opacity-[0.04] lg:opacity-100 pointer-events-none transition-opacity duration-500">
-        <ProfilePhoto 
-          wrapperClassName="h-full" 
-          imageClassName="object-left-bottom scale-x-[-1] drop-shadow-2xl" 
-        />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-brand-primary/5 blur-3xl -z-10 rounded-full mix-blend-screen" />
-      </div>
+      {showProfilePhoto && (
+        <div className="absolute bottom-0 left-0 z-0 h-[40%] sm:h-[50%] md:h-[60%] lg:h-[75%] xl:h-[85%] hidden md:flex items-end opacity-[0.04] lg:opacity-100 pointer-events-none transition-opacity duration-500">
+          <ProfilePhoto
+            wrapperClassName="h-full"
+            imageClassName="object-left-bottom scale-x-[-1] drop-shadow-2xl"
+          />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-brand-primary/5 blur-3xl -z-10 rounded-full mix-blend-screen" />
+        </div>
+      )}
 
       <div className="relative z-10 max-w-7xl w-full mx-auto px-6 md:px-12 flex justify-end">
         <div className="flex flex-col lg:flex-row items-start gap-12 lg:gap-16 xl:gap-24 w-full md:w-[90%] lg:w-[85%] xl:w-[80%]">
@@ -53,11 +59,11 @@ export const About = () => {
             <h2 className="text-3xl md:text-5xl font-bold text-white text-left">
               Sobre <span className="text-brand-primary">mim</span>
             </h2>
-            
+
             <div className="flex flex-col gap-4 text-brand-muted text-base md:text-lg leading-relaxed">
               <p>
                 Mais do que linhas de código, construo soluções focadas em
-                 arquitetura escalabilidade e clareza.
+                arquitetura escalabilidade e clareza.
               </p>
               <p>
                 Integro a IA como parceira estratégica no dia a dia para acelerar testes, refatorações e debugs, mantendo qualidade e consistência na entrega.
@@ -69,47 +75,45 @@ export const About = () => {
           </div>
 
           <div className="flex-1 flex flex-col gap-10 lg:mt-16 w-full">
-              <h3 className="text-white font-semibold mb-1 sm:-mb-2 sm:ml-32.5 text-left">Hard Skills</h3>
-              <SkillRow 
-                title="Front-End:" 
-                icons={[
-                  { label: "HTML5", icon: <FaHtml5 size={26} key="html" /> },
-                  { label: "CSS3", icon: <FaCss3Alt size={26} key="css" /> },
-                  { label: "JavaScript", icon: <SiJavascript size={24} key="js" /> },
-                  { label: "TypeScript", icon: <SiTypescript size={22} key="ts" /> },
-                  { label: "React", icon: <FaReact size={26} key="react" /> },
-                  { label: "Next.js", icon: <SiNextdotjs size={25} key="next" /> },
-                  { label: "Tailwind", icon: <SiTailwindcss size={25} key="tailwind" /> }
-                ]} 
-              />
-              <SkillRow 
-                title="Design UI/UX:" 
-                icons={[
-                  { label: "Figma", icon: <FaFigma size={26} key="figma" /> }
-                ]} 
-              />
-              <SkillRow 
-                title="Back-End:" 
-                icons={[
-                  { label: "Node.js", icon: <FaNodeJs size={26} key="node" /> },
-                  { label: "Express", icon: <SiExpress size={25} key="express" /> },
-                  { label: "Fastify", icon: <SiFastify size={25} key="fastify" /> },
-                  { label: "Prisma", icon: <SiPrisma size={25} key="prisma" /> },
-                  { label: "PostgreSQL", icon: <SiPostgresql size={25} key="pg" /> },
-                  { label: "MongoDB", icon: <SiMongodb size={25} key="mongo" /> },
-                  { label: "Java", icon: <FaJava size={26} key="java" /> },
-                  { label: "Spring", icon: <SiSpring size={25} key="spring" /> }
-                ]} 
-              />
-              <SkillRow 
-                title="Ferramentas:" 
-                icons={[
-                  { label: "Git", icon: <FaGitAlt size={26} key="git" /> },
-                  { label: "GitLab", icon: <SiGitlab size={24} key="gitlab" /> },
-                  { label: "CI/CD", icon: <FaCodeBranch size={24} key="pipeline" /> },
-                  { label: "Docker", icon: <FaDocker size={26} key="docker" /> }
-                ]} 
-              />
+            <h3 className="text-white font-semibold mb-1 sm:-mb-2 sm:ml-32.5 text-left">Hard Skills</h3>
+            <SkillRow
+              title="Front-End:"
+              icons={[
+                { label: "HTML5", icon: <FaHtml5 size={26} key="html" /> },
+                { label: "CSS3", icon: <FaCss3Alt size={26} key="css" /> },
+                { label: "JavaScript", icon: <SiJavascript size={24} key="js" /> },
+                { label: "TypeScript", icon: <SiTypescript size={22} key="ts" /> },
+                { label: "React", icon: <FaReact size={26} key="react" /> },
+                { label: "Next.js", icon: <SiNextdotjs size={25} key="next" /> },
+                { label: "Tailwind", icon: <SiTailwindcss size={25} key="tailwind" /> },
+              ]}
+            />
+            <SkillRow
+              title="Design UI/UX:"
+              icons={[{ label: "Figma", icon: <FaFigma size={26} key="figma" /> }]}
+            />
+            <SkillRow
+              title="Back-End:"
+              icons={[
+                { label: "Node.js", icon: <FaNodeJs size={26} key="node" /> },
+                { label: "Express", icon: <SiExpress size={25} key="express" /> },
+                { label: "Fastify", icon: <SiFastify size={25} key="fastify" /> },
+                { label: "Prisma", icon: <SiPrisma size={25} key="prisma" /> },
+                { label: "PostgreSQL", icon: <SiPostgresql size={25} key="pg" /> },
+                { label: "MongoDB", icon: <SiMongodb size={25} key="mongo" /> },
+                { label: "Java", icon: <FaJava size={26} key="java" /> },
+                { label: "Spring", icon: <SiSpring size={25} key="spring" /> },
+              ]}
+            />
+            <SkillRow
+              title="Ferramentas:"
+              icons={[
+                { label: "Git", icon: <FaGitAlt size={26} key="git" /> },
+                { label: "GitLab", icon: <SiGitlab size={24} key="gitlab" /> },
+                { label: "CI/CD", icon: <FaCodeBranch size={24} key="pipeline" /> },
+                { label: "Docker", icon: <FaDocker size={26} key="docker" /> },
+              ]}
+            />
 
             <div className="flex flex-col gap-3 sm:gap-4">
               <h3 className="text-white font-semibold sm:ml-32.5 text-left">Soft Skills</h3>
@@ -124,5 +128,5 @@ export const About = () => {
         </div>
       </div>
     </section>
-  )
+  );
 };

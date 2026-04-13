@@ -6,12 +6,13 @@ export const Sidebar = () => {
     <nav
       className="fixed z-50 bg-black/40 backdrop-blur-md border border-white/10 rounded-full flex 
         bottom-6 left-1/2 -translate-x-1/2 flex-row w-[90%] max-w-[320px] justify-between px-6 py-4 
-        md:bottom-auto md:left-auto md:translate-x-0 md:right-10 md:top-[40%] md:-translate-y-1/2 md:flex-col md:w-auto md:px-4 md:py-6 md:gap-8">
+        md:bottom-auto md:left-auto md:translate-x-0 md:right-10 md:top-[40%] md:-translate-y-1/2 md:flex-col md:w-auto md:px-4 md:py-6 md:gap-8 md:bg-black/28 md:border-white/5 md:backdrop-blur-sm">
 
       <Link
         href="/"
         aria-label="Home"
-        className="relative group text-brand-muted hover:text-brand-primary active:text-brand-primary transition active:scale-95 focus-visible:text-brand-primary focus-visible:outline-none flex items-center justify-center touch-manipulation" >
+        className="relative group text-brand-muted hover:text-brand-primary active:text-brand-primary transition active:scale-95 focus-visible:text-brand-primary focus-visible:outline-none flex items-center justify-center touch-manipulation"
+      >
         <Home size={22} />
         <span className="hidden md:block absolute right-full mr-5 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-black/80 backdrop-blur-md border border-white/10 text-white text-xs font-medium rounded-md opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap">
           Home
@@ -32,7 +33,7 @@ export const Sidebar = () => {
         href="/projects"
         aria-label="Projetos"
         className="relative group text-brand-muted hover:text-brand-primary active:text-brand-primary transition active:scale-95 focus-visible:text-brand-primary focus-visible:outline-none flex items-center justify-center touch-manipulation"
-        >
+      >
         <FolderGit2 size={22} />
         <span className="hidden md:block absolute right-full mr-5 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-black/80 backdrop-blur-md border border-white/10 text-white text-xs font-medium rounded-md opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap">
           Projetos
@@ -42,8 +43,8 @@ export const Sidebar = () => {
       <Link
         href="/contact"
         aria-label="Contato"
-        className="relative group text-brand-muted hover:text-brand-primary active:text-brand-primary transition active:scale-95 focus-visible:text-brand-primary focus-visible:outline-none flex items-center justify-center touch-manipulation">
-          
+        className="relative group text-brand-muted hover:text-brand-primary active:text-brand-primary transition active:scale-95 focus-visible:text-brand-primary focus-visible:outline-none flex items-center justify-center touch-manipulation"
+      >
         <Mail size={22} />
         <span className="hidden md:block absolute right-full mr-5 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-black/80 backdrop-blur-md border border-white/10 text-white text-xs font-medium rounded-md opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap">
           Contato
