@@ -7,10 +7,18 @@ const outfit = Outfit({
   variable: "--font-outfit",
 });
 
-export const metadata: Metadata = {
-  title: "Portfolio | Full-Stack Developer",
-  description: "Full-Stack Developer focused on scalable solutions.",
-};
+export function generateMetadata(): Metadata {
+  return {
+    metadataBase: new URL("http://localhost:3000"),
+    alternates: {
+      canonical: "/",
+      languages: {
+        en: "/",
+        pt: "/pt",
+      },
+    },
+  };
+}
 
 export default function RootLayout({
   children,
