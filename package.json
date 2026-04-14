@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node -e \"const fs=require('fs'); fs.mkdirSync('.next/server', {recursive:true}); fs.writeFileSync('.next/server/middleware.js.nft.json', JSON.stringify({version:1,files:[]}));\"",
     "start": "next start",
     "lint": "eslint"
   },
