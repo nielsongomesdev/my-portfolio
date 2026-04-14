@@ -9,7 +9,7 @@ const outfit = Outfit({
 
 export function generateMetadata(): Metadata {
   return {
-    metadataBase: new URL("http://localhost:3000"),
+    metadataBase: new URL("https://portfolio-nielson.vercel.app"),
     alternates: {
       canonical: "/",
       languages: {

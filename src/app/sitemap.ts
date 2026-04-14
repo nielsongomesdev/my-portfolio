@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const baseUrl = "http://localhost:3000";
+const baseUrl = "https://portfolio-nielson.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = ["", "/about", "/projects", "/contact"];

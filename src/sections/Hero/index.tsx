@@ -12,12 +12,14 @@ export const Hero = () => {
   const titleLine2 = t.rich("titleLine2", {
     highlight: (chunks) => <span className="text-brand-primary">{chunks}</span>,
   });
+  const description = t.rich("description", {
+    mobileBreak: (chunks) => <span className="block mt-2 md:mt-0 md:inline">{chunks}</span>,
+  });
 
   return (
     <section className="relative w-full h-screen flex flex-col justify-center md:flex-row md:items-center text-brand-text overflow-hidden">
       <ParticlesBackground />
-
-      {/* A MÁGICA FOI AQUI: Mudamos o from-brand-bg/95 para from-brand-bg/40 */}
+      
       <div className="absolute inset-0 z-1 bg-linear-to-b md:bg-linear-to-r from-brand-bg/40 via-brand-bg/80 to-transparent pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl w-full mx-auto px-6 md:px-12 flex flex-col md:flex-row items-start md:items-center justify-between">
@@ -28,14 +30,15 @@ export const Hero = () => {
             {titleLine2}
           </h1>
 
-          <p className="text-base md:text-lg text-white/90 leading-relaxed max-w-[90%] md:max-w-xl drop-shadow-md">
-            {t("description")}
+          <p className="text-base md:text-lg text-white/90 leading-relaxed max-w-[36ch] md:max-w-[58ch] text-pretty drop-shadow-md">
+            {description}
           </p>
 
           <div className="mt-4 md:mt-8 flex justify-start">
             <a
               href="/curriculo.pdf"
-              download="SeuNome_CV_FullStack.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-brand-primary text-brand-text px-6 py-3 sm:px-10 sm:py-3.5 rounded-md border border-white/10 ring-1 ring-white/10 ring-inset font-semibold tracking-wide shadow-lg shadow-brand-primary/30 hover:brightness-110 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-brand-primary/40 active:translate-y-0 active:scale-[0.99] transition-all duration-300"
             >
               <Download size={18} aria-hidden="true" />

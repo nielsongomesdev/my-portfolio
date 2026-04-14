@@ -26,5 +26,5 @@ Bem-vindo ao repositório do meu portfólio pessoal! Este projeto foi desenvolvi
    npm run dev
    ```
 
-3. Acesse [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado.
+3. Acesse [https://portfolio-nielson.vercel.app/](https://portfolio-nielson.vercel.app/) no seu navegador para ver o resultado.
 
