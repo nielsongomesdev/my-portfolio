@@ -42,7 +42,9 @@
     "titleAccent": "projects",
     "description": "Some projects I built by applying my skills in real-world scenarios.",
     "private": "Private",
-    "live": "Live"
+    "live": "Live",
+    "swipeHint": "Swipe to see more",
+    "nextProjectAria": "View next project"
   },
   "contact": {
     "title": "Contact",

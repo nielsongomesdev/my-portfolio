@@ -42,7 +42,9 @@
     "titleAccent": "projetos",
     "description": "Alguns dos projetos que desenvolvi aplicando meus conhecimentos na prática.",
     "private": "Privado",
-    "live": "Live"
+    "live": "Live",
+    "swipeHint": "Deslize para ver mais",
+    "nextProjectAria": "Ver próximo projeto"
   },
   "contact": {
     "title": "Fale",

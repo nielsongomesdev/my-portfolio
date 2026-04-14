@@ -1,6 +1,8 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { ExternalLink, Lock, Key } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { FiGithub } from "react-icons/fi";
 import Image from "next/image";
 import { projectsData } from "@/data";
@@ -8,6 +10,57 @@ import { useTranslations } from "next-intl";
 
 export const Projects = () => {
   const t = useTranslations("projects");
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+  const totalSlides = projectsData.length;
+  const progressPercentage = totalSlides > 1 ? (activeIndex / (totalSlides - 1)) * 100 : 100;
+
+  useEffect(() => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+
+    const updateSliderState = () => {
+      const cards = slider.querySelectorAll<HTMLElement>("[data-project-card]");
+      if (cards.length === 0) return;
+
+      const viewportCenter = slider.scrollLeft + slider.clientWidth / 2;
+      let closestCard = 0;
+      let smallestDistance = Number.POSITIVE_INFINITY;
+
+      cards.forEach((card, index) => {
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        const distance = Math.abs(cardCenter - viewportCenter);
+
+        if (distance < smallestDistance) {
+          smallestDistance = distance;
+          closestCard = index;
+        }
+      });
+
+      setActiveIndex(closestCard);
+      setCanScrollRight(slider.scrollLeft + slider.clientWidth < slider.scrollWidth - 8);
+    };
+
+    updateSliderState();
+    slider.addEventListener("scroll", updateSliderState, { passive: true });
+    window.addEventListener("resize", updateSliderState);
+
+    return () => {
+      slider.removeEventListener("scroll", updateSliderState);
+      window.removeEventListener("resize", updateSliderState);
+    };
+  }, []);
+
+  const goToNext = () => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+
+    slider.scrollBy({
+      left: slider.clientWidth * 0.85,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <section id="projects" className="relative w-full flex items-center min-h-screen lg:h-screen pt-28 pb-12 lg:py-0 overflow-hidden z-10">
@@ -20,10 +73,15 @@ export const Projects = () => {
             {t("description")}
           </p>
         </div>
-        <div className="lg:w-[55%] flex lg:grid lg:grid-cols-2 gap-4 lg:gap-6 w-full overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none pb-8 lg:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+        <div className="lg:w-[55%] w-full relative">
+          <div
+            ref={sliderRef}
+            className="flex lg:grid lg:grid-cols-2 gap-4 lg:gap-6 w-full overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none pb-8 lg:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          >
           {projectsData.map((project) => (
             <div
               key={project.id}
+              data-project-card
               className="group relative shrink-0 w-[85vw] sm:w-100 lg:w-full snap-center lg:snap-none aspect-4/3 lg:aspect-video rounded-2xl overflow-hidden border border-white/10 bg-black"
             >
               <Image
@@ -73,6 +131,36 @@ export const Projects = () => {
             </div>
           ))}
           <div className="lg:hidden shrink-0 w-1" />
+          </div>
+
+          <div className="lg:hidden mt-2 flex items-center justify-between gap-4">
+            <span className="text-[11px] tracking-wide uppercase text-brand-muted/80">
+              {t("swipeHint")}
+            </span>
+
+            <div className="flex items-center gap-2" aria-hidden>
+              <div className="w-20 h-1.5 rounded-full bg-white/20 overflow-hidden">
+                <div
+                  className="h-full rounded-full bg-brand-primary transition-all duration-300"
+                  style={{ width: `${progressPercentage}%` }}
+                />
+              </div>
+              <span className="text-[11px] font-medium text-white/80 min-w-9 text-right">
+                {activeIndex + 1}/{totalSlides}
+              </span>
+            </div>
+          </div>
+
+          {canScrollRight && (
+            <button
+              type="button"
+              onClick={goToNext}
+              className="lg:hidden absolute right-2 top-[42%] -translate-y-1/2 flex items-center justify-center w-9 h-9 rounded-full border border-white/15 bg-black/70 text-white backdrop-blur-sm"
+              aria-label={t("nextProjectAria")}
+            >
+              <ChevronRight size={16} />
+            </button>
+          )}
         </div>
       </div>
     </section>
