@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && node -e \"const fs=require('fs'); const path=require('path'); const d=path.join('.next', 'server'); if(!fs.existsSync(d)) fs.mkdirSync(d, {recursive:true}); const p=path.join(d, 'middleware.js.nft.json'); if(!fs.existsSync(p)) fs.writeFileSync(p, JSON.stringify({version:1,files:[]}));\"",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
