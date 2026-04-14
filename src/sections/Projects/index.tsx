@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ExternalLink, Lock, Key } from "lucide-react";
-import { ChevronRight } from "lucide-react";
 import { FiGithub } from "react-icons/fi";
 import Image from "next/image";
 import { projectsData } from "@/data";
@@ -12,7 +11,6 @@ export const Projects = () => {
   const t = useTranslations("projects");
   const sliderRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [canScrollRight, setCanScrollRight] = useState(true);
   const totalSlides = projectsData.length;
   const progressPercentage = totalSlides > 1 ? (activeIndex / (totalSlides - 1)) * 100 : 100;
 
@@ -39,7 +37,6 @@ export const Projects = () => {
       });
 
       setActiveIndex(closestCard);
-      setCanScrollRight(slider.scrollLeft + slider.clientWidth < slider.scrollWidth - 8);
     };
 
     updateSliderState();
@@ -51,16 +48,6 @@ export const Projects = () => {
       window.removeEventListener("resize", updateSliderState);
     };
   }, []);
-
-  const goToNext = () => {
-    const slider = sliderRef.current;
-    if (!slider) return;
-
-    slider.scrollBy({
-      left: slider.clientWidth * 0.85,
-      behavior: "smooth",
-    });
-  };
 
   return (
     <section id="projects" className="relative w-full flex items-center min-h-screen lg:h-screen pt-28 pb-12 lg:py-0 overflow-hidden z-10">
@@ -151,16 +138,6 @@ export const Projects = () => {
             </div>
           </div>
 
-          {canScrollRight && (
-            <button
-              type="button"
-              onClick={goToNext}
-              className="lg:hidden absolute right-2 top-[42%] -translate-y-1/2 flex items-center justify-center w-9 h-9 rounded-full border border-white/15 bg-black/70 text-white backdrop-blur-sm"
-              aria-label={t("nextProjectAria")}
-            >
-              <ChevronRight size={16} />
-            </button>
-          )}
         </div>
       </div>
     </section>
