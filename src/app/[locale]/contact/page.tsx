@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: ContactPageProps): Promise<Me
 
 export default function ContactPage() {
   return (
-    <main className="w-full min-h-screen">
+    <main className="w-full min-h-screen pb-28 md:pb-0">
       <Contact />
     </main>
   );
