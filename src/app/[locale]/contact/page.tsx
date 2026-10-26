@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Contact } from "@/sections";
 import { routing } from "@/i18n/routing";
 
@@ -14,23 +15,27 @@ export async function generateMetadata({ params }: ContactPageProps): Promise<Me
     return {};
   }
 
-  const canonicalPath = locale === "pt" ? "/pt/contact" : "/contact";
+  const t = await getTranslations({ locale, namespace: "metadata" });
+  const path = locale === "pt" ? "/pt/contact" : "/contact";
 
   return {
+    title: t("contact.title"),
+    description: t("contact.description"),
     alternates: {
-      canonical: canonicalPath,
-      languages: {
-        en: "/contact",
-        pt: "/pt/contact",
-      },
+      canonical: path,
+      languages: { en: "/contact", pt: "/pt/contact", "x-default": "/contact" },
+    },
+    openGraph: {
+      title: t("contact.title"),
+      description: t("contact.description"),
+      url: path,
     },
   };
 }
 
-export default function ContactPage() {
-  return (
-    <main className="w-full min-h-screen pb-28 md:pb-0">
-      <Contact />
-    </main>
-  );
+export default async function ContactPage({ params }: ContactPageProps) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  return <Contact />;
 }

@@ -1,61 +1,86 @@
-"use client";
-
-import { ProfilePhoto, ParticlesBackground } from "@/components";
-import { Download } from "lucide-react";
+import { ArrowRight, FileText } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { ButtonLink, Eyebrow, ParticleField, ProfilePhoto, TechList } from "@/components";
+import { coreStack, site } from "@/data";
 
-export const Hero = () => {
+/** Staggered CSS entrance (no JS needed, keeps LCP early). */
+const rise = (step: number) => ({ animationDelay: `${step * 70}ms` });
+
+export function Hero() {
   const t = useTranslations("hero");
-  const titleLine1 = t.rich("titleLine1", {
-    highlight: (chunks) => <span className="text-brand-primary">{chunks}</span>,
-  });
-  const titleLine2 = t.rich("titleLine2", {
-    highlight: (chunks) => <span className="text-brand-primary">{chunks}</span>,
-  });
-  const description = t.rich("description", {
-    mobileBreak: (chunks) => <span className="block mt-2 md:mt-0 md:inline">{chunks}</span>,
-  });
+  const tc = useTranslations("common");
 
   return (
-    <section className="relative w-full h-screen flex flex-col justify-center md:flex-row md:items-center text-brand-text overflow-hidden">
-      <ParticlesBackground />
-      
-      <div className="absolute inset-0 z-1 bg-linear-to-b md:bg-linear-to-r from-brand-bg/40 via-brand-bg/80 to-transparent pointer-events-none" />
+    <section className="relative overflow-hidden">
+      <ParticleField className="[mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)]" />
+      <div className="container-page relative grid items-end gap-10 pt-14 pb-16 sm:pt-20 lg:min-h-[calc(100svh-4rem)] lg:grid-cols-12 lg:gap-8 lg:pt-0 lg:pb-0">
+        <div className="flex flex-col gap-7 lg:col-span-7 lg:py-28">
+          <div className="animate-rise flex flex-wrap items-center gap-4" style={rise(0)}>
+            <ProfilePhoto alt={t("photoAlt")} variant="avatar" className="size-14 lg:hidden" priority />
+            <p className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-border bg-bg-elevated/80 py-1.5 pr-3.5 pl-2.5 font-mono text-xs font-medium tracking-wide text-fg-muted">
+              <span className="relative flex size-2">
+                <span className="absolute inline-flex size-full animate-ping rounded-full bg-success/60 motion-reduce:hidden" />
+                <span className="relative inline-flex size-2 rounded-full bg-success" />
+              </span>
+              {t("available")}
+            </p>
+          </div>
 
-      <div className="relative z-10 max-w-7xl w-full mx-auto px-6 md:px-12 flex flex-col md:flex-row items-start md:items-center justify-between">
-        <div className="flex-1 flex flex-col gap-5 text-left max-w-2xl z-20 mb-[15vh] md:mb-0 mt-20 md:mt-0">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight drop-shadow-lg">
-            {titleLine1}
-            <br />
-            {titleLine2}
-          </h1>
-
-          <p className="text-base md:text-lg text-white/90 leading-relaxed max-w-[36ch] md:max-w-[58ch] text-pretty drop-shadow-md">
-            {description}
-          </p>
-
-          <div className="mt-4 md:mt-8 flex justify-start">
-            <a
-              href="/curriculo.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-brand-primary text-brand-text px-6 py-3 sm:px-10 sm:py-3.5 rounded-md border border-white/10 ring-1 ring-white/10 ring-inset font-semibold tracking-wide shadow-lg shadow-brand-primary/30 hover:brightness-110 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-brand-primary/40 active:translate-y-0 active:scale-[0.99] transition-all duration-300"
+          <div className="flex flex-col gap-5">
+            <div className="animate-rise" style={rise(1)}>
+              <Eyebrow>{t("eyebrow")}</Eyebrow>
+            </div>
+            <h1
+              className="animate-rise-solid max-w-[16ch] text-4xl font-semibold leading-[1.06] tracking-tight text-balance sm:text-5xl lg:text-6xl"
+              style={rise(2)}
             >
-              <Download size={18} aria-hidden="true" />
-              <span>{t("downloadCv")}</span>
-            </a>
+              {t("title")}
+            </h1>
+            <p
+              className="animate-rise max-w-[58ch] text-base leading-relaxed text-fg-muted text-pretty sm:text-lg"
+              style={rise(3)}
+            >
+              {t("description")}
+            </p>
+          </div>
+
+          <div
+            className="animate-rise flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
+            style={rise(4)}
+          >
+            <ButtonLink href="/projects" size="lg" className="group w-full sm:w-auto">
+              {t("primaryCta")}
+              <ArrowRight
+                size={18}
+                aria-hidden="true"
+                className="transition-transform duration-200 ease-out-expo group-hover:translate-x-0.5"
+              />
+            </ButtonLink>
+            <ButtonLink href="/contact" variant="secondary" size="lg" className="w-full sm:w-auto">
+              {t("secondaryCta")}
+            </ButtonLink>
+            <ButtonLink href={site.cv} variant="ghost" size="lg" className="self-start sm:self-auto">
+              <FileText size={16} aria-hidden="true" />
+              {tc("cv")}
+              <span className="sr-only"> ({tc("newTab")})</span>
+            </ButtonLink>
+          </div>
+
+          <div className="animate-rise flex flex-col gap-3 border-t border-border pt-6" style={rise(5)}>
+            <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-fg-subtle">
+              {t("stackLabel")}
+            </p>
+            <TechList items={coreStack} />
           </div>
         </div>
-      </div>
 
-      <div className="absolute bottom-0 right-[-10%] sm:right-0 z-0 h-[50%] sm:h-[65%] md:h-[85%] lg:h-[95%] flex items-end justify-end pointer-events-none opacity-65 md:opacity-100 md:brightness-100 transition-all duration-500">
-        <ProfilePhoto
-          wrapperClassName="h-full"
-          imageClassName="left-auto right-0 object-bottom-right drop-shadow-2xl"
-        />
-
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-brand-primary/10 blur-3xl -z-10 rounded-full mix-blend-screen" />
+        <div
+          className="animate-rise relative hidden h-[36rem] self-end lg:col-span-5 lg:block xl:h-[40rem]"
+          style={rise(3)}
+        >
+          <ProfilePhoto alt={t("photoAlt")} variant="cutout" className="h-full w-full" priority />
+        </div>
       </div>
     </section>
   );
-};
+}

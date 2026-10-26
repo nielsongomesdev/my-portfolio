@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
-import { About } from "@/sections";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { About, ContactCta } from "@/sections";
 import { routing } from "@/i18n/routing";
 
 type AboutPageProps = {
@@ -14,23 +15,32 @@ export async function generateMetadata({ params }: AboutPageProps): Promise<Meta
     return {};
   }
 
-  const canonicalPath = locale === "pt" ? "/pt/about" : "/about";
+  const t = await getTranslations({ locale, namespace: "metadata" });
+  const path = locale === "pt" ? "/pt/about" : "/about";
 
   return {
+    title: t("about.title"),
+    description: t("about.description"),
     alternates: {
-      canonical: canonicalPath,
-      languages: {
-        en: "/about",
-        pt: "/pt/about",
-      },
+      canonical: path,
+      languages: { en: "/about", pt: "/pt/about", "x-default": "/about" },
+    },
+    openGraph: {
+      title: t("about.title"),
+      description: t("about.description"),
+      url: path,
     },
   };
 }
 
-export default function AboutPage() {
+export default async function AboutPage({ params }: AboutPageProps) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
-    <main className="w-full min-h-screen">
+    <>
       <About />
-    </main>
+      <ContactCta />
+    </>
   );
 }

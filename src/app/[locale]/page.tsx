@@ -1,9 +1,20 @@
-import { Hero } from "@/sections";
+import { setRequestLocale } from "next-intl/server";
+import { Approach, ContactCta, FeaturedProjects, Hero } from "@/sections";
 
-export default function Home() {
+type HomePageProps = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function HomePage({ params }: HomePageProps) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
-    <main className="w-full min-h-screen">
+    <>
       <Hero />
-    </main>
+      <FeaturedProjects />
+      <Approach />
+      <ContactCta />
+    </>
   );
 }

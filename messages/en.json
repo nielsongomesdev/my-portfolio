@@ -1,81 +1,299 @@
 {
-  "header": {
+  "common": {
     "name": "Nielson Gomes",
-    "switch": "PT",
-    "switchAria": "Switch language"
+    "role": "Full Stack Developer",
+    "location": "João Pessoa, PB · Brazil",
+    "skipToContent": "Skip to content",
+    "switchLocale": "PT",
+    "switchLocaleAria": "Mudar para português",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "email": "Email",
+    "cv": "Resume (PDF)",
+    "newTab": "opens in a new tab"
   },
-  "sidebar": {
+  "nav": {
+    "label": "Main navigation",
     "home": "Home",
     "about": "About",
     "projects": "Projects",
     "contact": "Contact"
   },
   "hero": {
-    "titleLine1": "Full <highlight>Stack</highlight>",
-    "titleLine2": "Developer",
-    "description": "Focused on building scalable, high-performance solutions with an excellent user experience. I transform ideas into digital products.",
-    "downloadCv": "Download CV"
+    "available": "Open to Full Stack opportunities",
+    "eyebrow": "Full Stack Developer · João Pessoa, Brazil",
+    "title": "End-to-end systems, from requirements to deployment.",
+    "description": "I build interfaces, APIs and databases across the whole cycle: from requirements gathering to deployment and evolving the system in production, with a focus on clean code, security and maintainability.",
+    "primaryCta": "View projects",
+    "secondaryCta": "Get in touch",
+    "stackLabel": "Core stack",
+    "photoAlt": "Photo of Nielson Gomes smiling, wearing a red t-shirt"
+  },
+  "home": {
+    "featured": {
+      "eyebrow": "Featured projects",
+      "title": "Selected work",
+      "description": "Two complete applications that show front-end, back-end and architecture decisions in practice.",
+      "cta": "View all projects"
+    },
+    "approach": {
+      "eyebrow": "How I work",
+      "title": "From requirements gathering to production support",
+      "items": {
+        "endToEnd": {
+          "title": "Full cycle",
+          "description": "I gather requirements with business teams, model the database, build the API and the interface, test and deploy. Then I maintain and evolve the solution."
+        },
+        "architecture": {
+          "title": "Layered architecture",
+          "description": "I separate business rules from the interface and apply Clean Code principles so the system can grow without losing clarity and maintainability."
+        },
+        "security": {
+          "title": "Security and data",
+          "description": "Authentication, roles and permissions, Row Level Security policies and optimized SQL queries, following security best practices and Brazil's data protection law (LGPD)."
+        }
+      }
+    },
+    "contactCta": {
+      "title": "Shall we talk about the next project?",
+      "description": "I'm open to Full Stack roles, freelance work and collaborations. I usually reply within two business days.",
+      "primary": "Send a message",
+      "secondary": "View resume"
+    }
   },
   "about": {
-    "title": "About",
-    "titleAccent": "me",
-    "paragraph1": "More than lines of code, I build solutions focused on architecture, scalability, and clarity.",
-    "paragraph2": "I use AI as a strategic partner in my daily workflow to speed up testing, refactoring, and debugging while keeping quality and consistency high.",
-    "paragraph3": "Outside the screen, calm keeps me grounded. In nature or watching a good anime, I recharge my energy.",
-    "hardSkillsTitle": "Hard Skills",
-    "hardSkills": {
-      "frontend": "Front-End:",
-      "uiux": "UI/UX Design:",
-      "backend": "Back-End:",
-      "tools": "Tools:"
+    "eyebrow": "About me",
+    "title": "Full Stack Developer in the TypeScript ecosystem, focused on clean code, security and maintainability.",
+    "lead": "Technologist in Internet Systems from UNIPÊ and currently pursuing a bachelor's degree in Software Engineering. I develop and maintain internal corporate systems at Bloco Construções, taking part in the whole cycle: requirements gathering with business teams, database modeling, REST APIs and interfaces, testing and deployment.",
+    "paragraphs": {
+      "p1": "On the front end, I turn high-fidelity prototypes into reusable, typed and responsive components with React, Next.js and TypeScript. On the back end, I structure layered REST APIs with Node.js, model PostgreSQL and Supabase databases and implement authentication, permission control and Row Level Security policies.",
+      "p2": "I use AI as a support tool to speed up testing, refactoring and debugging, while keeping review and final decisions about the code under my responsibility. As complementary knowledge, I'm studying Java with Spring Boot, AWS and Docker.",
+      "p3": "Away from the screen, I recharge in nature and watching a good anime."
     },
-    "softSkillsTitle": "Soft Skills",
-    "softSkills": {
-      "teamwork": "Teamwork",
-      "criticalThinking": "Critical Thinking",
-      "fastLearning": "Fast Learning",
-      "empathy": "Empathy"
+    "facts": {
+      "locationLabel": "Location",
+      "languagesLabel": "Languages",
+      "location": "João Pessoa, Brazil",
+      "currentRole": "Full Stack at Bloco Construções",
+      "languages": "Portuguese (native) · English (basic, technical reading)"
+    },
+    "experience": {
+      "eyebrow": "Experience",
+      "title": "Professional path",
+      "current": "Current",
+      "items": {
+        "bloco": {
+          "role": "Process & Automation Assistant · Full Stack Development",
+          "company": "Bloco Construções",
+          "period": "Jun 2026 – present",
+          "bullets": {
+            "b1": "Develop and maintain internal systems for different areas of the company, from requirements gathering to deployment, maintenance and evolution.",
+            "b2": "Build interfaces with React, Next.js and TypeScript and REST APIs with Node.js, including third-party API integrations.",
+            "b3": "Model and manage PostgreSQL/Supabase databases, writing and optimizing SQL queries with a focus on data integrity and performance.",
+            "b4": "Implement authentication, authorization, role and permission management and Row Level Security policies, following security and LGPD best practices.",
+            "b5": "Plan and run tests, fix bugs, support end users and organize deliveries in sprints on Trello."
+          }
+        },
+        "unipe": {
+          "role": "Front-End Developer",
+          "company": "Software Factory · UNIPÊ",
+          "period": "Feb 2025 – Dec 2025",
+          "bullets": {
+            "b1": "Built responsive, scalable interfaces with React, Next.js and TypeScript, applying layered architecture to separate business rules from the interface.",
+            "b2": "Created a library of reusable components, reducing rework and standardizing the interface across screens.",
+            "b3": "Turned high-fidelity Figma prototypes into working code, with visual fidelity and a focus on usability.",
+            "b4": "Worked in an agile team (Scrum), with Git/GitLab versioning, code review and task management on Trello."
+          }
+        }
+      }
+    },
+    "education": {
+      "eyebrow": "Education",
+      "title": "Academic background",
+      "items": {
+        "unipe": {
+          "degree": "Technologist in Internet Systems",
+          "school": "Centro Universitário de João Pessoa (UNIPÊ)",
+          "period": "Completed Jul 2026"
+        },
+        "descomplica": {
+          "degree": "Bachelor's in Software Engineering",
+          "school": "Descomplica Faculdade Digital",
+          "period": "Aug 2025 – Jun 2029 · in progress"
+        },
+        "devquest": {
+          "degree": "DevQuest · Full stack web development",
+          "school": "Dev em Dobro",
+          "period": "Course"
+        }
+      }
+    },
+    "skills": {
+      "eyebrow": "Skills",
+      "title": "Technologies I use",
+      "description": "Grouped by purpose, with no percentage bars: the depth of each one shows in the projects.",
+      "groups": {
+        "languages": "Languages",
+        "frontend": "Front-end",
+        "backend": "Back-end and data",
+        "quality": "Architecture and quality",
+        "tools": "Tools and methods",
+        "learning": "Currently deepening"
+      }
     }
   },
   "projects": {
-    "title": "My",
-    "titleAccent": "projects",
-    "description": "Some projects I built by applying my skills in real-world scenarios.",
-    "private": "Private",
-    "live": "Live",
-    "swipeHint": "Swipe to see more",
-    "nextProjectAria": "View next project"
+    "eyebrow": "Projects",
+    "title": "Projects that show how I build software.",
+    "description": "Ordered by relevance. The first two are complete applications; the rest are technical tests, APIs and academic work with open source code.",
+    "featuredLabel": "Featured",
+    "othersTitle": "Other projects",
+    "moreTitle": "More on GitHub",
+    "moreDescription": "APIs, technical tests and academic work with public code.",
+    "labels": {
+      "live": "View project",
+      "code": "Code",
+      "apiCode": "API code",
+      "private": "Private code",
+      "demoAccess": "Demo access",
+      "highlights": "Highlights",
+      "stack": "Stack",
+      "imageAlt": "Screenshot of the {name} project"
+    },
+    "types": {
+      "product": "Complete application",
+      "test": "Technical test",
+      "landing": "Landing page",
+      "api": "REST API",
+      "academic": "Academic project"
+    },
+    "items": {
+      "techstation": {
+        "title": "TechStation E-commerce",
+        "tagline": "Online store for high-performance hardware and complete setups.",
+        "description": "E-commerce front end with a category catalog, product page, persistent cart and sign-in/sign-up flow. The project's REST API lives in its own repository, built with Fastify, Prisma and PostgreSQL.",
+        "highlights": {
+          "h1": "File-based routes with TanStack Router and global cart state via Context.",
+          "h2": "Shipping cost calculation by postal code on the product page and cart persisted in localStorage.",
+          "h3": "Sign-in and sign-up forms validated with React Hook Form and Zod.",
+          "h4": "Separate API with JWT authentication, transactional orders with price snapshots and OpenAPI docs."
+        }
+      },
+      "mfrp": {
+        "title": "MFRP · Snack bar management",
+        "tagline": "Orders, cash register and admin system for a snack bar.",
+        "description": "Authenticated application to manage orders, control the cash register and run the business from its own admin panel. The code is private, but the app can be tested with the demo access.",
+        "highlights": {
+          "h1": "Order management and cash control in a single admin panel.",
+          "h2": "Interface built with Next.js and accessible Radix UI components.",
+          "h3": "MongoDB persistence and transactional emails with Resend."
+        }
+      },
+      "githubSearch": {
+        "title": "GitHub Search",
+        "tagline": "User and repository search on top of GitHub's public API.",
+        "description": "Technical test: user search, profile with avatar, bio, location and company, repository list with infinite scroll and sorting, in Portuguese and English.",
+        "highlights": {
+          "h1": "Infinite scroll with 10 repositories per page and sorting by update, creation, push or name.",
+          "h2": "API responses validated with Zod and HTTP client with Axios.",
+          "h3": "pt/en internationalization with i18next and responsive layout with Chakra UI."
+        }
+      },
+      "psybookings": {
+        "title": "S&M PsyBookings",
+        "tagline": "Landing page for a psytrance booking agency.",
+        "description": "Institutional page with a retro-futuristic identity, background video, testimonial carousel and scroll animations, built without frameworks.",
+        "highlights": {
+          "h1": "Design system in CSS variables with Flexbox and Grid layouts.",
+          "h2": "Scroll animations with Intersection Observer and prefers-reduced-motion support.",
+          "h3": "Testimonial carousel with touch and mouse support in vanilla JavaScript."
+        }
+      },
+      "techstationApi": {
+        "title": "TechStation API",
+        "tagline": "REST API for the TechStation store with Fastify, Prisma and PostgreSQL.",
+        "description": "JWT authentication, product and category CRUD with soft delete, transactional orders with stock control, OpenAPI documentation and Vitest tests."
+      },
+      "monitorAns": {
+        "title": "ANS Monitor",
+        "tagline": "Monitoring of ANS (Brazilian health agency) data with Java, Spring Boot, Vue and MySQL.",
+        "description": "Technical test with batch CSV import via JDBC, paginated listing and search by company name, tax ID or ANS registration. Layered architecture and JUnit 5 tests."
+      },
+      "projetoFilmes": {
+        "title": "Projeto Filmes",
+        "tagline": "Full stack movie CRUD with React, Express and Prisma.",
+        "description": "Final project for a web frameworks course: React front end with Vite and TypeScript, Express API with Prisma and a SQLite database, organized as a monorepo."
+      }
+    }
   },
   "contact": {
-    "title": "Contact",
-    "titleAccent": "me",
+    "eyebrow": "Contact",
+    "title": "Let's talk.",
+    "description": "Full Stack roles, freelance projects or a question about some project: write through the form or through one of the direct channels.",
+    "channelsTitle": "Direct channels",
+    "locationLabel": "Location",
+    "responseTime": "I usually reply within two business days.",
     "form": {
+      "legend": "Contact form",
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
       "placeholders": {
-        "name": "Name",
-        "email": "Email",
-        "subject": "Subject",
-        "message": "Message"
+        "name": "What should I call you?",
+        "email": "you@company.com",
+        "subject": "Job, project or question",
+        "message": "Tell me a bit about what you need."
       },
-      "send": "Send",
+      "send": "Send message",
       "sending": "Sending...",
       "errors": {
         "nameRequired": "Please enter your name.",
         "emailRequired": "Please enter your email.",
         "emailInvalid": "Please enter a valid email.",
         "subjectRequired": "Please enter a subject.",
-        "messageRequired": "Message cannot be empty.",
-        "submit": "Error sending message.",
-        "submitLater": "Error sending message. Please try again later."
+        "messageRequired": "The message cannot be empty.",
+        "submit": "The message could not be sent.",
+        "submitLater": "The message could not be sent. Please try again later or use the direct email."
+      },
+      "success": {
+        "title": "Message sent!",
+        "description": "Thanks for getting in touch. I'll reply as soon as possible.",
+        "again": "Send another message"
       }
-    },
-    "successModal": {
-      "title": "Message sent!",
-      "description": "Thanks for getting in touch. I will reply as soon as possible!",
-      "close": "Close"
     }
   },
+  "footer": {
+    "tagline": "Full Stack Developer · React, Next.js and Node.js",
+    "builtWith": "Built with Next.js, Tailwind CSS and Motion.",
+    "rights": "© {year} Nielson Gomes",
+    "linksLabel": "Footer links"
+  },
+  "notFound": {
+    "eyebrow": "Error 404",
+    "title": "Page not found.",
+    "description": "The address you tried to reach doesn't exist or has moved.",
+    "cta": "Back to home"
+  },
   "metadata": {
-    "title": "Nielson Gomes | Full Stack Developer",
-    "description": "Portfolio of Nielson Gomes, a Full Stack Developer focused on building scalable, high-performance web solutions. Explore my projects and skills."
+    "siteName": "Nielson Gomes",
+    "home": {
+      "title": "Nielson Gomes | Full Stack Developer",
+      "description": "Portfolio of Nielson Gomes, Full Stack Developer working with React, Next.js, Node.js, TypeScript and PostgreSQL. Explore projects, experience and ways to get in touch."
+    },
+    "about": {
+      "title": "About",
+      "description": "Career path, experience at Bloco Construções and UNIPÊ's Software Factory, education and technologies of Nielson Gomes, Full Stack Developer."
+    },
+    "projects": {
+      "title": "Projects",
+      "description": "E-commerce, management system, REST APIs and technical tests built by Nielson Gomes with React, Next.js, Node.js and Java."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Reach Nielson Gomes about Full Stack roles, freelance projects or collaborations."
+    },
+    "ogRole": "Full Stack Developer",
+    "ogStack": "React · Next.js · Node.js · TypeScript · PostgreSQL"
   }
 }
