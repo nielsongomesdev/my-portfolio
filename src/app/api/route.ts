@@ -5,18 +5,26 @@ type ContactBody = {
   email?: string;
   message?: string;
   subject?: string;
+  /** Honeypot field: real users never fill it in. */
+  website?: string;
 };
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MAX_FIELD_LENGTH = 2000;
 
 export async function POST(request: Request) {
   try {
     const body = (await request.json()) as ContactBody;
 
-    const name = body.name?.trim() || "";
-    const email = body.email?.trim() || "";
-    const message = body.message?.trim() || "";
-    const subject = body.subject?.trim() || "Contato pelo portfólio";
+    // Bots that fill every field get a silent success and nothing is sent.
+    if (body.website?.trim()) {
+      return NextResponse.json({ message: "Mensagem enviada com sucesso." }, { status: 200 });
+    }
+
+    const name = body.name?.trim().slice(0, MAX_FIELD_LENGTH) || "";
+    const email = body.email?.trim().slice(0, MAX_FIELD_LENGTH) || "";
+    const message = body.message?.trim().slice(0, MAX_FIELD_LENGTH * 2) || "";
+    const subject = body.subject?.trim().slice(0, MAX_FIELD_LENGTH) || "Contato pelo portfólio";
 
     if (!name || !email || !message) {
       return NextResponse.json(
@@ -54,8 +62,8 @@ export async function POST(request: Request) {
         template_params: {
           user_name: name,
           user_email: email,
-          message: message,
-          subject: subject,
+          message,
+          subject,
         },
       }),
     });
@@ -75,10 +83,7 @@ export async function POST(request: Request) {
         );
       }
 
-      return NextResponse.json(
-        { message: `Falha no provedor de e-mail: ${errorText}` },
-        { status: 500 }
-      );
+      return NextResponse.json({ message: "Falha no provedor de e-mail." }, { status: 502 });
     }
 
     return NextResponse.json({ message: "Mensagem enviada com sucesso." }, { status: 200 });

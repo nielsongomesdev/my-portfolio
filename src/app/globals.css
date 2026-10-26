@@ -1,36 +1,165 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-bg: #09090b;
-  --color-brand-text: #fafafa;
-  --color-brand-muted: #a1a1aa;
-  --color-brand-primary: #ef4444;
-  --color-cosmic-bg-near-black: #0a0c10;
-  --color-cosmic-bg-deep-indigo: #1a1c36;
+  /* Surfaces */
+  --color-bg: #0a0a0b;
+  --color-bg-elevated: #111113;
+  --color-bg-subtle: #18181b;
+
+  /* Borders */
+  --color-border: oklch(100% 0 0 / 8%);
+  --color-border-strong: oklch(100% 0 0 / 16%);
+
+  /* Text */
+  --color-fg: #f4f4f5;
+  --color-fg-muted: #a1a1aa;
+  --color-fg-subtle: #8b8b94;
+
+  /* Accent (single brand color, used sparingly).
+     `accent` is for text/icons on dark surfaces (4.6:1 on bg);
+     `accent-solid` is for filled buttons with white text (4.8:1). */
+  --color-accent: #ef4444;
+  --color-accent-solid: #dc2626;
+  --color-accent-solid-hover: #b91c1c;
+  --color-accent-soft: oklch(63.7% 0.237 25.3 / 12%);
+  --color-accent-fg: #ffffff;
+
+  /* Status */
+  --color-success: #22c55e;
+
+  /* Typography */
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-body {
-  font-family: var(--font-outfit), sans-serif;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100dvh;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-accent-fg);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Subtle, non-hidden scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(100% 0 0 / 18%) transparent;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
 
-html,
-body,
-main {
-  max-width: 100%;
-  overflow-x: hidden;
+@utility container-page {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 72rem;
+  padding-inline: 1.25rem;
+
+  @media (width >= 40rem) {
+    padding-inline: 2rem;
+  }
 }
 
-html {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+/* Faint static texture behind the whole site: a soft accent glow at the top
+   and a fine grid that fades out. CSS only, no JS, no paint cost on scroll. */
+@utility site-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(60rem 32rem at 70% -10%, oklch(63.7% 0.237 25.3 / 10%), transparent 70%),
+    linear-gradient(to right, oklch(100% 0 0 / 3%) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(100% 0 0 / 3%) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    4rem 4rem,
+    4rem 4rem;
+  mask-image: linear-gradient(to bottom, black 0%, black 35%, transparent 90%);
 }
 
-* {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+@utility text-balance {
+  text-wrap: balance;
 }
 
-*::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+/* Entrance animations that run without JavaScript. Above-the-fold content
+   is never server-rendered as invisible, so LCP is not delayed by hydration.
+   The reduced-motion rule in @layer base collapses them to ~0ms. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility animate-rise {
+  animation: rise 0.65s var(--ease-out-expo) both;
+}
+
+/* Transform-only variant for the hero headline: it is the page's largest
+   content, so it must never start invisible (keeps LCP at first paint). */
+@keyframes rise-solid {
+  from {
+    transform: translateY(16px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@utility animate-rise-solid {
+  animation: rise-solid 0.65s var(--ease-out-expo) both;
+}
+
+@utility animate-page-in {
+  animation: page-in 0.3s var(--ease-out-expo) both;
 }
