@@ -1,29 +1,23 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { usePathname, useRouter } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 
-export const LanguageSwitcher = () => {
-  const t = useTranslations("header");
+export function LanguageSwitcher() {
+  const t = useTranslations("common");
   const locale = useLocale();
-  const router = useRouter();
   const pathname = usePathname();
-
   const nextLocale = locale === "en" ? "pt" : "en";
 
-  const handleSwitchLanguage = () => {
-    router.replace(pathname, { locale: nextLocale });
-  };
-
-
   return (
-    <button
-      type="button"
-      onClick={handleSwitchLanguage}
-      className="text-brand-muted hover:text-white transition-colors text-xs md:text-sm font-semibold tracking-wide"
-      aria-label={t("switchAria")}
+    <Link
+      href={pathname}
+      locale={nextLocale}
+      hrefLang={nextLocale}
+      className="inline-flex h-10 items-center rounded-md border border-border px-3 font-mono text-xs font-medium tracking-wide text-fg-muted transition-colors hover:border-border-strong hover:text-fg"
     >
-      {t("switch")}
-    </button>
+      {t("switchLocale")}
+      <span className="sr-only">: {t("switchLocaleAria")}</span>
+    </Link>
   );
-};
+}

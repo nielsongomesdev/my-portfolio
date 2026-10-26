@@ -1,135 +1,158 @@
-"use client";
-
-import { ProfilePhoto } from "@/components";
-import { FaReact, FaNodeJs, FaGitAlt, FaHtml5, FaCss3Alt, FaJava, FaFigma, FaDocker, FaCodeBranch } from "react-icons/fa";
-import { SiNextdotjs, SiTailwindcss, SiTypescript, SiJavascript, SiExpress, SiFastify, SiPrisma, SiPostgresql, SiMongodb, SiSpring, SiGitlab } from "react-icons/si";
+import { Briefcase, GraduationCap, Languages, MapPin } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { Eyebrow, ProfilePhoto, Reveal, SectionHeading, TechList } from "@/components";
+import { skillGroups } from "@/data";
 
-const SkillRow = ({
-  title,
-  icons,
-}: {
-  title: string;
-  icons: { label: string; icon: React.ReactNode }[];
-}) => (
-  <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-4 w-full">
-    <span className="text-brand-muted text-sm md:text-base font-medium min-w-28 md:min-w-28.75 text-left sm:text-right">
-      {title}
-    </span>
-    <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-white/80">
-      {icons.map(({ label, icon }) => (
-        <div
-          key={label}
-          className="group relative text-white/75 hover:text-white hover:scale-110 transition-all duration-300"
-          aria-label={label}
-        >
-          {icon}
-          <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md border border-white/15 bg-black/85 px-2 py-1 text-[11px] text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-            {label}
-          </span>
-        </div>
-      ))}
-    </div>
-  </div>
-);
+const experienceItems = [
+  { key: "bloco", bullets: 5, current: true },
+  { key: "unipe", bullets: 4, current: false },
+] as const;
 
-const SoftSkillTag = ({ text }: { text: string }) => (
-  <div className="px-2 sm:px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-brand-muted text-[11px] sm:text-sm hover:text-white hover:bg-white/10 transition-all cursor-default text-center whitespace-nowrap">
-    {text}
-  </div>
-);
+const educationItems = ["unipe", "descomplica", "devquest"] as const;
 
-interface AboutProps {
-  showProfilePhoto?: boolean;
-}
+const facts = [
+  { labelKey: "facts.locationLabel", valueKey: "facts.location", icon: MapPin },
+  { labelKey: "experience.current", valueKey: "facts.currentRole", icon: Briefcase },
+  { labelKey: "facts.languagesLabel", valueKey: "facts.languages", icon: Languages },
+] as const;
 
-export const About = ({ showProfilePhoto = true }: AboutProps) => {
+export function About() {
   const t = useTranslations("about");
-  const softSkills = [
-    t("softSkills.teamwork"),
-    t("softSkills.criticalThinking"),
-    t("softSkills.fastLearning"),
-    t("softSkills.empathy"),
-  ];
+  const th = useTranslations("hero");
 
   return (
-    <section className="relative min-h-screen w-full flex items-start lg:items-center overflow-x-hidden pt-28 pb-28 lg:py-20">
-      {showProfilePhoto && (
-        <div className="absolute bottom-0 left-0 z-0 h-[40%] sm:h-[50%] md:h-[60%] lg:h-[75%] xl:h-[85%] hidden md:flex items-end opacity-[0.04] lg:opacity-100 pointer-events-none transition-opacity duration-500">
-          <ProfilePhoto
-            wrapperClassName="h-full"
-            imageClassName="object-left-bottom scale-x-[-1] drop-shadow-2xl"
-          />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-brand-primary/5 blur-3xl -z-10 rounded-full mix-blend-screen" />
-        </div>
-      )}
-
-      <div className="relative z-10 max-w-7xl w-full mx-auto px-6 md:px-12 flex justify-end">
-        <div className="flex flex-col lg:flex-row items-start gap-12 lg:gap-16 xl:gap-24 w-full md:w-[90%] lg:w-[85%] xl:w-[80%]">
-          <div className="flex-1 flex flex-col gap-6 lg:mt-16 w-full">
-            <h2 className="text-3xl md:text-5xl font-bold text-white text-left">
-              {t("title")} <span className="text-brand-primary">{t("titleAccent")}</span>
-            </h2>
-
-            <div className="flex flex-col gap-4 text-brand-muted text-base md:text-lg leading-relaxed">
-              <p>{t("paragraph1")}</p>
-              <p>{t("paragraph2")}</p>
-              <p>{t("paragraph3")}</p>
-            </div>
+    <>
+      <section>
+        <div className="container-page grid gap-12 py-16 sm:py-20 lg:grid-cols-12 lg:gap-10 lg:py-28">
+          <div className="flex flex-col gap-8 lg:col-span-7">
+            <Reveal className="flex items-center gap-4">
+              <ProfilePhoto alt={th("photoAlt")} variant="avatar" className="size-16" priority />
+              <Eyebrow>{t("eyebrow")}</Eyebrow>
+            </Reveal>
+            <Reveal delay={0.06}>
+              <SectionHeading as="h1" size="page" title={t("title")} />
+            </Reveal>
+            <Reveal delay={0.12}>
+              <p className="max-w-[62ch] text-lg leading-relaxed text-fg text-pretty">{t("lead")}</p>
+            </Reveal>
+            <Reveal delay={0.18} className="flex max-w-[62ch] flex-col gap-4 text-base leading-relaxed text-fg-muted">
+              <p>{t("paragraphs.p1")}</p>
+              <p>{t("paragraphs.p2")}</p>
+              <p>{t("paragraphs.p3")}</p>
+            </Reveal>
           </div>
 
-          <div className="flex-1 flex flex-col gap-10 lg:mt-16 w-full">
-            <h3 className="text-white font-semibold mb-1 sm:-mb-2 sm:ml-32.5 text-left">{t("hardSkillsTitle")}</h3>
-            <SkillRow
-              title={t("hardSkills.frontend")}
-              icons={[
-                { label: "HTML5", icon: <FaHtml5 size={26} key="html" /> },
-                { label: "CSS3", icon: <FaCss3Alt size={26} key="css" /> },
-                { label: "JavaScript", icon: <SiJavascript size={24} key="js" /> },
-                { label: "TypeScript", icon: <SiTypescript size={22} key="ts" /> },
-                { label: "React", icon: <FaReact size={26} key="react" /> },
-                { label: "Next.js", icon: <SiNextdotjs size={25} key="next" /> },
-                { label: "Tailwind", icon: <SiTailwindcss size={25} key="tailwind" /> },
-              ]}
-            />
-            <SkillRow
-              title={t("hardSkills.uiux")}
-              icons={[{ label: "Figma", icon: <FaFigma size={26} key="figma" /> }]}
-            />
-            <SkillRow
-              title={t("hardSkills.backend")}
-              icons={[
-                { label: "Node.js", icon: <FaNodeJs size={26} key="node" /> },
-                { label: "Express", icon: <SiExpress size={25} key="express" /> },
-                { label: "Fastify", icon: <SiFastify size={25} key="fastify" /> },
-                { label: "Prisma", icon: <SiPrisma size={25} key="prisma" /> },
-                { label: "PostgreSQL", icon: <SiPostgresql size={25} key="pg" /> },
-                { label: "MongoDB", icon: <SiMongodb size={25} key="mongo" /> },
-                { label: "Java", icon: <FaJava size={26} key="java" /> },
-                { label: "Spring", icon: <SiSpring size={25} key="spring" /> },
-              ]}
-            />
-            <SkillRow
-              title={t("hardSkills.tools")}
-              icons={[
-                { label: "Git", icon: <FaGitAlt size={26} key="git" /> },
-                { label: "GitLab", icon: <SiGitlab size={24} key="gitlab" /> },
-                { label: "CI/CD", icon: <FaCodeBranch size={24} key="pipeline" /> },
-                { label: "Docker", icon: <FaDocker size={26} key="docker" /> },
-              ]}
-            />
-
-            <div className="flex flex-col gap-3 sm:gap-4">
-              <h3 className="text-white font-semibold sm:ml-32.5 text-left">{t("softSkillsTitle")}</h3>
-              <div className="grid grid-cols-2 gap-2 sm:gap-3 sm:ml-32.5 w-full max-w-75 sm:max-w-none sm:w-max">
-                {softSkills.map((skill) => (
-                  <SoftSkillTag key={skill} text={skill} />
-                ))}
-              </div>
-            </div>
-          </div>
+          <Reveal delay={0.2} className="lg:col-span-4 lg:col-start-9">
+            <dl className="flex flex-col divide-y divide-border rounded-2xl border border-border bg-bg-elevated">
+              {facts.map(({ labelKey, valueKey, icon: Icon }) => (
+                <div key={valueKey} className="relative flex flex-col gap-0.5 py-5 pr-5 pl-13">
+                  <Icon size={18} aria-hidden="true" className="absolute top-5.5 left-5 text-accent" />
+                  <dt className="font-mono text-xs uppercase tracking-[0.18em] text-fg-subtle">{t(labelKey)}</dt>
+                  <dd className="text-sm text-fg">{t(valueKey)}</dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section className="border-t border-border">
+        <div className="container-page grid gap-10 py-16 sm:py-20 lg:py-24 lg:grid-cols-12">
+          <Reveal className="lg:col-span-4">
+            <SectionHeading eyebrow={t("experience.eyebrow")} title={t("experience.title")} />
+          </Reveal>
+
+          <ol className="flex flex-col lg:col-span-8">
+            {experienceItems.map(({ key, bullets, current }, index) => (
+              <Reveal
+                key={key}
+                as="li"
+                delay={index * 0.08}
+                className="grid gap-4 border-t border-border py-8 first:border-t-0 first:pt-0 md:grid-cols-[11rem_1fr] md:gap-8"
+              >
+                <div className="flex flex-col gap-1 font-mono text-xs text-fg-subtle">
+                  <span>{t(`experience.items.${key}.period`)}</span>
+                  {current && (
+                    <span className="inline-flex w-fit items-center gap-1.5 text-success">
+                      <span className="size-1.5 rounded-full bg-success" aria-hidden="true" />
+                      {t("experience.current")}
+                    </span>
+                  )}
+                </div>
+                <div className="flex flex-col gap-4">
+                  <div className="flex flex-col gap-1">
+                    <h3 className="text-lg font-semibold tracking-tight">{t(`experience.items.${key}.role`)}</h3>
+                    <p className="text-sm text-fg-muted">{t(`experience.items.${key}.company`)}</p>
+                  </div>
+                  <ul className="flex flex-col gap-2.5">
+                    {Array.from({ length: bullets }, (_, i) => `b${i + 1}`).map((bullet) => (
+                      <li key={bullet} className="flex gap-3 text-sm leading-relaxed text-fg-muted sm:text-base">
+                        <span aria-hidden="true" className="mt-[11px] h-px w-3 shrink-0 bg-accent sm:mt-3" />
+                        <span>{t(`experience.items.${key}.bullets.${bullet}`)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="border-t border-border">
+        <div className="container-page grid gap-10 py-16 sm:py-20 lg:py-24 lg:grid-cols-12">
+          <Reveal className="lg:col-span-4">
+            <SectionHeading eyebrow={t("education.eyebrow")} title={t("education.title")} />
+          </Reveal>
+
+          <ul className="grid gap-4 lg:col-span-8 md:grid-cols-3">
+            {educationItems.map((key, index) => (
+              <Reveal
+                key={key}
+                as="li"
+                delay={index * 0.08}
+                className="flex flex-col gap-4 rounded-2xl border border-border bg-bg-elevated p-6"
+              >
+                <GraduationCap size={20} aria-hidden="true" className="text-accent" />
+                <div className="flex flex-col gap-1">
+                  <h3 className="font-semibold tracking-tight">{t(`education.items.${key}.degree`)}</h3>
+                  <p className="text-sm text-fg-muted">{t(`education.items.${key}.school`)}</p>
+                </div>
+                <p className="mt-auto font-mono text-xs text-fg-subtle">{t(`education.items.${key}.period`)}</p>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="border-t border-border">
+        <div className="container-page grid gap-10 py-16 sm:py-20 lg:py-24 lg:grid-cols-12">
+          <Reveal className="lg:col-span-4">
+            <SectionHeading
+              eyebrow={t("skills.eyebrow")}
+              title={t("skills.title")}
+              description={t("skills.description")}
+            />
+          </Reveal>
+
+          <dl className="flex flex-col lg:col-span-8">
+            {skillGroups.map((group, index) => (
+              <Reveal
+                key={group.key}
+                delay={index * 0.06}
+                className="grid gap-3 border-t border-border py-6 first:border-t-0 first:pt-0 md:grid-cols-[11rem_1fr] md:gap-8"
+              >
+                <dt className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-fg-subtle md:pt-1.5">
+                  {t(`skills.groups.${group.key}`)}
+                </dt>
+                <dd>
+                  <TechList items={group.items} />
+                </dd>
+              </Reveal>
+            ))}
+          </dl>
+        </div>
+      </section>
+    </>
   );
-};
+}
