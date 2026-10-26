@@ -1,23 +1,19 @@
 import type { MetadataRoute } from "next";
+import { site } from "@/data";
 
-const baseUrl = "https://portfolio-nielson.vercel.app";
+const routes = ["", "/about", "/projects", "/contact"] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ["", "/about", "/projects", "/contact"];
+  const lastModified = new Date();
 
   return routes.flatMap((route) => {
-    const enPath = route || "/";
-    const ptPath = route ? `/pt${route}` : "/pt";
+    const en = `${site.url}${route || "/"}`;
+    const pt = `${site.url}/pt${route}`;
+    const languages = { en, pt, "x-default": en };
 
     return [
-      {
-        url: `${baseUrl}${enPath}`,
-        lastModified: new Date(),
-      },
-      {
-        url: `${baseUrl}${ptPath}`,
-        lastModified: new Date(),
-      },
+      { url: en, lastModified, alternates: { languages } },
+      { url: pt, lastModified, alternates: { languages } },
     ];
   });
 }

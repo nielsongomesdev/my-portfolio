@@ -1,81 +1,299 @@
 {
-  "header": {
+  "common": {
     "name": "Nielson Gomes",
-    "switch": "EN",
-    "switchAria": "Trocar idioma"
+    "role": "Desenvolvedor Full Stack",
+    "location": "João Pessoa, PB · Brasil",
+    "skipToContent": "Pular para o conteúdo",
+    "switchLocale": "EN",
+    "switchLocaleAria": "Switch to English",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "email": "E-mail",
+    "cv": "Currículo (PDF)",
+    "newTab": "abre em nova aba"
   },
-  "sidebar": {
-    "home": "Home",
-    "about": "Sobre Mim",
+  "nav": {
+    "label": "Navegação principal",
+    "home": "Início",
+    "about": "Sobre",
     "projects": "Projetos",
     "contact": "Contato"
   },
   "hero": {
-    "titleLine1": "Desenvolvedor",
-    "titleLine2": "Full <highlight>Stack</highlight>",
-    "description": "Focado em criar soluções escaláveis, performáticas e com excelente experiência de usuário.<mobileBreak>Transformo ideias em produtos digitais.</mobileBreak>",
-    "downloadCv": "Baixar CV"
+    "available": "Aberto a oportunidades Full Stack",
+    "eyebrow": "Desenvolvedor Full Stack · João Pessoa, PB",
+    "title": "Sistemas de ponta a ponta, do requisito à implantação.",
+    "description": "Desenvolvo interfaces, APIs e bancos de dados participando de todo o ciclo: do levantamento de requisitos à implantação e à evolução do sistema em produção, com foco em código limpo, segurança e manutenibilidade.",
+    "primaryCta": "Ver projetos",
+    "secondaryCta": "Entrar em contato",
+    "stackLabel": "Stack principal",
+    "photoAlt": "Foto de Nielson Gomes sorrindo, vestindo camiseta vermelha"
+  },
+  "home": {
+    "featured": {
+      "eyebrow": "Projetos em destaque",
+      "title": "Trabalhos selecionados",
+      "description": "Duas aplicações completas que mostram front-end, back-end e decisões de arquitetura na prática.",
+      "cta": "Ver todos os projetos"
+    },
+    "approach": {
+      "eyebrow": "Como trabalho",
+      "title": "Do levantamento de requisitos ao suporte em produção",
+      "items": {
+        "endToEnd": {
+          "title": "Ciclo completo",
+          "description": "Levanto requisitos com as áreas de negócio, modelo o banco, construo a API e a interface, testo e implanto. Depois, mantenho e evoluo a solução."
+        },
+        "architecture": {
+          "title": "Arquitetura em camadas",
+          "description": "Separo regras de negócio da interface e aplico princípios de Clean Code para que o sistema cresça sem perder clareza e manutenibilidade."
+        },
+        "security": {
+          "title": "Segurança e dados",
+          "description": "Autenticação, perfis e permissões, políticas de Row Level Security e consultas SQL otimizadas, seguindo boas práticas de segurança e da LGPD."
+        }
+      }
+    },
+    "contactCta": {
+      "title": "Vamos conversar sobre o próximo projeto?",
+      "description": "Estou aberto a vagas Full Stack, freelas e colaborações. Costumo responder em até dois dias úteis.",
+      "primary": "Enviar mensagem",
+      "secondary": "Ver currículo"
+    }
   },
   "about": {
-    "title": "Sobre",
-    "titleAccent": "mim",
-    "paragraph1": "Mais do que linhas de código, construo soluções focadas em arquitetura, escalabilidade e clareza.",
-    "paragraph2": "Integro a IA como parceira estratégica no dia a dia para acelerar testes, refatorações e debugs, mantendo qualidade e consistência na entrega.",
-    "paragraph3": "Fora das telas, sou movido pela calma. É no silêncio da natureza ou acompanhando um bom anime que recarrego minha energia.",
-    "hardSkillsTitle": "Hard Skills",
-    "hardSkills": {
-      "frontend": "Front-End:",
-      "uiux": "Design UI/UX:",
-      "backend": "Back-End:",
-      "tools": "Ferramentas:"
+    "eyebrow": "Sobre mim",
+    "title": "Desenvolvedor Full Stack no ecossistema TypeScript, com foco em código limpo, segurança e manutenibilidade.",
+    "lead": "Tecnólogo em Sistemas para Internet pela UNIPÊ e graduando em Engenharia de Software. Desenvolvo e mantenho sistemas internos corporativos na Bloco Construções, participando de todo o ciclo: levantamento de requisitos com as áreas de negócio, modelagem de banco de dados, construção de APIs REST e interfaces, testes e implantação.",
+    "paragraphs": {
+      "p1": "No front-end, transformo protótipos de alta fidelidade em componentes reutilizáveis, tipados e responsivos com React, Next.js e TypeScript. No back-end, estruturo APIs REST em camadas com Node.js, modelo bancos PostgreSQL e Supabase e implemento autenticação, controle de permissões e políticas de Row Level Security.",
+      "p2": "Uso IA como apoio para acelerar testes, refatorações e depuração, mantendo a revisão e a decisão final sobre o código sob minha responsabilidade. Como conhecimentos complementares, estudo Java com Spring Boot, AWS e Docker.",
+      "p3": "Fora das telas, recarrego as energias na natureza e acompanhando um bom anime."
     },
-    "softSkillsTitle": "Soft Skills",
-    "softSkills": {
-      "teamwork": "Trabalho em Equipe",
-      "criticalThinking": "Pensamento Crítico",
-      "fastLearning": "Aprendizado Rápido",
-      "empathy": "Empatia"
+    "facts": {
+      "locationLabel": "Localização",
+      "languagesLabel": "Idiomas",
+      "location": "João Pessoa, PB",
+      "currentRole": "Full Stack na Bloco Construções",
+      "languages": "Português nativo · Inglês básico (leitura técnica)"
+    },
+    "experience": {
+      "eyebrow": "Experiência",
+      "title": "Trajetória profissional",
+      "current": "Atual",
+      "items": {
+        "bloco": {
+          "role": "Assistente de Processos e Automações · Desenvolvimento Full Stack",
+          "company": "Bloco Construções",
+          "period": "jun 2026 – atual",
+          "bullets": {
+            "b1": "Desenvolvo e mantenho sistemas internos para diferentes áreas da empresa, do levantamento de requisitos à implantação, manutenção e evolução das soluções.",
+            "b2": "Construo interfaces com React, Next.js e TypeScript e APIs REST com Node.js, incluindo integrações com APIs de terceiros.",
+            "b3": "Modelo e administro bancos PostgreSQL/Supabase, criando e otimizando consultas SQL com foco em integridade e desempenho.",
+            "b4": "Implemento autenticação, autorização, gestão de perfis e permissões e políticas de Row Level Security, seguindo boas práticas de segurança e da LGPD.",
+            "b5": "Planejo e executo testes, corrijo bugs, presto suporte aos usuários finais e organizo as entregas em sprints no Trello."
+          }
+        },
+        "unipe": {
+          "role": "Desenvolvedor Front-End",
+          "company": "Fábrica de Software · UNIPÊ",
+          "period": "fev 2025 – dez 2025",
+          "bullets": {
+            "b1": "Desenvolvi interfaces responsivas e escaláveis com React, Next.js e TypeScript, aplicando arquitetura em camadas para separar regras de negócio e interface.",
+            "b2": "Criei uma biblioteca de componentes reutilizáveis, reduzindo retrabalho e padronizando a interface entre as telas.",
+            "b3": "Converti protótipos de alta fidelidade do Figma em código funcional, com fidelidade visual e foco em usabilidade.",
+            "b4": "Atuei em equipe ágil (Scrum), com versionamento em Git/GitLab, code review e gestão de tarefas no Trello."
+          }
+        }
+      }
+    },
+    "education": {
+      "eyebrow": "Formação",
+      "title": "Formação acadêmica",
+      "items": {
+        "unipe": {
+          "degree": "Tecnólogo em Sistemas para Internet",
+          "school": "Centro Universitário de João Pessoa (UNIPÊ)",
+          "period": "Concluído em jul 2026"
+        },
+        "descomplica": {
+          "degree": "Bacharelado em Engenharia de Software",
+          "school": "Descomplica Faculdade Digital",
+          "period": "ago 2025 – jun 2029 · em andamento"
+        },
+        "devquest": {
+          "degree": "DevQuest · Desenvolvimento web full stack",
+          "school": "Dev em Dobro",
+          "period": "Curso"
+        }
+      }
+    },
+    "skills": {
+      "eyebrow": "Competências",
+      "title": "Tecnologias que uso",
+      "description": "Agrupadas por finalidade, sem barras de porcentagem: o nível de cada uma aparece nos projetos.",
+      "groups": {
+        "languages": "Linguagens",
+        "frontend": "Front-end",
+        "backend": "Back-end e dados",
+        "quality": "Arquitetura e qualidade",
+        "tools": "Ferramentas e métodos",
+        "learning": "Em aprofundamento"
+      }
     }
   },
   "projects": {
-    "title": "Meus",
-    "titleAccent": "projetos",
-    "description": "Alguns dos projetos que desenvolvi aplicando meus conhecimentos na prática.",
-    "private": "Privado",
-    "live": "Live",
-    "swipeHint": "Deslize para ver mais",
-    "nextProjectAria": "Ver próximo projeto"
-  },
-  "contact": {
-    "title": "Fale",
-    "titleAccent": "comigo",
-    "form": {
-      "placeholders": {
-        "name": "Nome",
-        "email": "Email",
-        "subject": "Assunto",
-        "message": "Mensagem"
-      },
-      "send": "Enviar",
-      "sending": "Enviando...",
-      "errors": {
-        "nameRequired": "Por favor, informe seu nome.",
-        "emailRequired": "Por favor, informe seu e-mail.",
-        "emailInvalid": "Informe um e-mail válido.",
-        "subjectRequired": "Por favor, informe o assunto.",
-        "messageRequired": "A mensagem não pode estar vazia.",
-        "submit": "Erro ao enviar mensagem.",
-        "submitLater": "Erro ao enviar mensagem. Tente novamente mais tarde."
-      }
+    "eyebrow": "Projetos",
+    "title": "Projetos que mostram como eu construo software.",
+    "description": "Ordenados por relevância. Os dois primeiros são aplicações completas; os demais são testes técnicos, APIs e trabalhos acadêmicos com código aberto.",
+    "featuredLabel": "Em destaque",
+    "othersTitle": "Outros projetos",
+    "moreTitle": "Mais no GitHub",
+    "moreDescription": "APIs, testes técnicos e trabalhos acadêmicos com código público.",
+    "labels": {
+      "live": "Ver projeto",
+      "code": "Código",
+      "apiCode": "Código da API",
+      "private": "Código privado",
+      "demoAccess": "Acesso de demonstração",
+      "highlights": "Destaques",
+      "stack": "Stack",
+      "imageAlt": "Captura de tela do projeto {name}"
     },
-    "successModal": {
-      "title": "Mensagem enviada!",
-      "description": "Obrigado por entrar em contato. Retornarei o mais breve possível!",
-      "close": "Fechar"
+    "types": {
+      "product": "Aplicação completa",
+      "test": "Teste técnico",
+      "landing": "Landing page",
+      "api": "API REST",
+      "academic": "Trabalho acadêmico"
+    },
+    "items": {
+      "techstation": {
+        "title": "TechStation E-commerce",
+        "tagline": "Loja virtual de hardware de alta performance e setups completos.",
+        "description": "Front-end de e-commerce com catálogo por categoria, página de produto, carrinho persistente e fluxo de login e cadastro. A API REST do projeto vive em um repositório próprio, com Fastify, Prisma e PostgreSQL.",
+        "highlights": {
+          "h1": "Rotas baseadas em arquivos com TanStack Router e estado global do carrinho via Context.",
+          "h2": "Cálculo de frete por CEP na página de produto e carrinho persistido em localStorage.",
+          "h3": "Formulários de login e cadastro validados com React Hook Form e Zod.",
+          "h4": "API separada com autenticação JWT, pedidos transacionais com snapshot de preço e documentação OpenAPI."
+        }
+      },
+      "mfrp": {
+        "title": "MFRP · Gestão de lanchonete",
+        "tagline": "Sistema de pedidos, caixa e administração para uma lanchonete.",
+        "description": "Aplicação autenticada para gerenciar pedidos, controlar o caixa e administrar o negócio em um painel próprio. O código é privado, mas a aplicação pode ser testada com o acesso de demonstração.",
+        "highlights": {
+          "h1": "Gerenciamento de pedidos e controle de caixa em um único painel administrativo.",
+          "h2": "Interface construída com Next.js e componentes acessíveis do Radix UI.",
+          "h3": "Persistência em MongoDB e envio de e-mails transacionais com Resend."
+        }
+      },
+      "githubSearch": {
+        "title": "GitHub Search",
+        "tagline": "Busca de usuários e repositórios consumindo a API pública do GitHub.",
+        "description": "Teste técnico: busca de usuários, perfil com avatar, bio, localização e empresa, lista de repositórios com scroll infinito e ordenação, em português e inglês.",
+        "highlights": {
+          "h1": "Scroll infinito com 10 repositórios por página e ordenação por atualização, criação, push ou nome.",
+          "h2": "Validação das respostas da API com Zod e cliente HTTP com Axios.",
+          "h3": "Internacionalização pt/en com i18next e layout responsivo com Chakra UI."
+        }
+      },
+      "psybookings": {
+        "title": "S&M PsyBookings",
+        "tagline": "Landing page para uma agência de bookings de psytrance.",
+        "description": "Página institucional com identidade retrofuturista, vídeo de fundo, carrossel de depoimentos e animações de rolagem, construída sem frameworks.",
+        "highlights": {
+          "h1": "Design system em variáveis CSS com layouts em Flexbox e Grid.",
+          "h2": "Animações de rolagem com Intersection Observer e respeito a prefers-reduced-motion.",
+          "h3": "Carrossel de depoimentos com suporte a toque e mouse em JavaScript puro."
+        }
+      },
+      "techstationApi": {
+        "title": "TechStation API",
+        "tagline": "API REST da loja TechStation com Fastify, Prisma e PostgreSQL.",
+        "description": "Autenticação JWT, CRUD de produtos e categorias com soft delete, pedidos transacionais com controle de estoque, documentação OpenAPI e testes com Vitest."
+      },
+      "monitorAns": {
+        "title": "Monitor ANS",
+        "tagline": "Monitoramento de dados da ANS com Java, Spring Boot, Vue e MySQL.",
+        "description": "Teste técnico com importação de CSV em lote via JDBC, listagem paginada e busca por razão social, CNPJ ou registro ANS. Arquitetura em camadas e testes com JUnit 5."
+      },
+      "projetoFilmes": {
+        "title": "Projeto Filmes",
+        "tagline": "CRUD de filmes full stack com React, Express e Prisma.",
+        "description": "Trabalho final da disciplina de frameworks web: front-end em React com Vite e TypeScript, API em Express com Prisma e banco SQLite, organizados em monorepo."
+      }
     }
   },
+  "contact": {
+    "eyebrow": "Contato",
+    "title": "Vamos conversar.",
+    "description": "Vagas Full Stack, projetos freelance ou uma dúvida sobre algum projeto: escreva pelo formulário ou por um dos canais diretos.",
+    "channelsTitle": "Canais diretos",
+    "locationLabel": "Localização",
+    "responseTime": "Costumo responder em até dois dias úteis.",
+    "form": {
+      "legend": "Formulário de contato",
+      "name": "Nome",
+      "email": "E-mail",
+      "subject": "Assunto",
+      "message": "Mensagem",
+      "placeholders": {
+        "name": "Como posso te chamar?",
+        "email": "voce@empresa.com",
+        "subject": "Vaga, projeto ou dúvida",
+        "message": "Conte um pouco sobre o que você precisa."
+      },
+      "send": "Enviar mensagem",
+      "sending": "Enviando...",
+      "errors": {
+        "nameRequired": "Informe seu nome.",
+        "emailRequired": "Informe seu e-mail.",
+        "emailInvalid": "Informe um e-mail válido.",
+        "subjectRequired": "Informe o assunto.",
+        "messageRequired": "A mensagem não pode ficar vazia.",
+        "submit": "Não foi possível enviar a mensagem.",
+        "submitLater": "Não foi possível enviar a mensagem. Tente novamente mais tarde ou use o e-mail direto."
+      },
+      "success": {
+        "title": "Mensagem enviada!",
+        "description": "Obrigado pelo contato. Retorno o mais breve possível.",
+        "again": "Enviar outra mensagem"
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Desenvolvedor Full Stack · React, Next.js e Node.js",
+    "builtWith": "Feito com Next.js, Tailwind CSS e Motion.",
+    "rights": "© {year} Nielson Gomes",
+    "linksLabel": "Links do rodapé"
+  },
+  "notFound": {
+    "eyebrow": "Erro 404",
+    "title": "Página não encontrada.",
+    "description": "O endereço que você acessou não existe ou foi movido.",
+    "cta": "Voltar para o início"
+  },
   "metadata": {
-    "title": "Nielson Gomes | Desenvolvedor Full Stack",
-    "description": "Portfólio de Nielson Gomes, Desenvolvedor Full Stack focado em criar soluções web escaláveis e de alta performance. Explore meus projetos e habilidades."
+    "siteName": "Nielson Gomes",
+    "home": {
+      "title": "Nielson Gomes | Desenvolvedor Full Stack",
+      "description": "Portfólio de Nielson Gomes, Desenvolvedor Full Stack com React, Next.js, Node.js, TypeScript e PostgreSQL. Veja projetos, experiência e formas de contato."
+    },
+    "about": {
+      "title": "Sobre",
+      "description": "Trajetória, experiência na Bloco Construções e na Fábrica de Software da UNIPÊ, formação e tecnologias de Nielson Gomes, Desenvolvedor Full Stack."
+    },
+    "projects": {
+      "title": "Projetos",
+      "description": "E-commerce, sistema de gestão, APIs REST e testes técnicos desenvolvidos por Nielson Gomes com React, Next.js, Node.js e Java."
+    },
+    "contact": {
+      "title": "Contato",
+      "description": "Fale com Nielson Gomes sobre vagas Full Stack, projetos freelance ou colaborações."
+    },
+    "ogRole": "Desenvolvedor Full Stack",
+    "ogStack": "React · Next.js · Node.js · TypeScript · PostgreSQL"
   }
 }
