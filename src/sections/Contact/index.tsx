@@ -76,7 +76,6 @@ export function Contact() {
                 <span className="font-mono text-xs text-fg-subtle">{tc("location")}</span>
               </li>
             </ul>
-            <p className="text-sm text-fg-subtle">{t("responseTime")}</p>
           </Reveal>
         </div>
 

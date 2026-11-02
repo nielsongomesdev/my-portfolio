@@ -9,7 +9,7 @@
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "email": "E-mail",
-    "cv": "Currículo (PDF)",
+    "cv": "Currículo",
     "newTab": "abre em nova aba"
   },
   "nav": {
@@ -20,14 +20,13 @@
     "contact": "Contato"
   },
   "hero": {
-    "available": "Aberto a oportunidades Full Stack",
-    "eyebrow": "Desenvolvedor Full Stack · João Pessoa, PB",
-    "title": "Sistemas de ponta a ponta, do requisito à implantação.",
+    "available": "Aberto a novas oportunidades",
+    "eyebrow": "Desenvolvedor Full Stack",
+    "title": "Sistemas de ponta a ponta, do requisito à implantação.",
     "description": "Desenvolvo interfaces, APIs e bancos de dados participando de todo o ciclo: do levantamento de requisitos à implantação e à evolução do sistema em produção, com foco em código limpo, segurança e manutenibilidade.",
-    "primaryCta": "Ver projetos",
-    "secondaryCta": "Entrar em contato",
-    "stackLabel": "Stack principal",
-    "photoAlt": "Foto de Nielson Gomes sorrindo, vestindo camiseta vermelha"
+    "photoAlt": "Foto de Nielson Gomes sorrindo, vestindo camiseta vermelha",
+    "contactCta": "Entrar em contato",
+    "cvCta": "Baixar currículo"
   },
   "home": {
     "featured": {
@@ -56,18 +55,17 @@
     },
     "contactCta": {
       "title": "Vamos conversar sobre o próximo projeto?",
-      "description": "Estou aberto a vagas Full Stack, freelas e colaborações. Costumo responder em até dois dias úteis.",
-      "primary": "Enviar mensagem",
-      "secondary": "Ver currículo"
+      "description": "Estou aberto a vagas Full Stack, freelas e colaborações.",
+      "primary": "Enviar mensagem"
     }
   },
   "about": {
     "eyebrow": "Sobre mim",
     "title": "Desenvolvedor Full Stack no ecossistema TypeScript, com foco em código limpo, segurança e manutenibilidade.",
-    "lead": "Tecnólogo em Sistemas para Internet pela UNIPÊ e graduando em Engenharia de Software. Desenvolvo e mantenho sistemas internos corporativos na Bloco Construções, participando de todo o ciclo: levantamento de requisitos com as áreas de negócio, modelagem de banco de dados, construção de APIs REST e interfaces, testes e implantação.",
+    "lead": "Formado em Sistemas para Internet pela Unipê e graduando em Engenharia de Software. Desenvolvo e mantenho sistemas internos corporativos na Bloco Construções, participando de todo o ciclo: levantamento de requisitos com as áreas de negócio, modelagem de banco de dados, construção de APIs REST e interfaces, testes e implantação.",
     "paragraphs": {
       "p1": "No front-end, transformo protótipos de alta fidelidade em componentes reutilizáveis, tipados e responsivos com React, Next.js e TypeScript. No back-end, estruturo APIs REST em camadas com Node.js, modelo bancos PostgreSQL e Supabase e implemento autenticação, controle de permissões e políticas de Row Level Security.",
-      "p2": "Uso IA como apoio para acelerar testes, refatorações e depuração, mantendo a revisão e a decisão final sobre o código sob minha responsabilidade. Como conhecimentos complementares, estudo Java com Spring Boot, AWS e Docker.",
+      "p2": "Uso IA tanto no desenvolvimento, para acelerar testes, refatorações e depuração, quanto nos produtos, integrando modelos de linguagem para ler documentos e automatizar tarefas. A revisão e a decisão final sobre o código são minhas.",
       "p3": "Fora das telas, recarrego as energias na natureza e acompanhando um bom anime."
     },
     "facts": {
@@ -87,16 +85,16 @@
           "company": "Bloco Construções",
           "period": "jun 2026 – atual",
           "bullets": {
-            "b1": "Desenvolvo e mantenho sistemas internos para diferentes áreas da empresa, do levantamento de requisitos à implantação, manutenção e evolução das soluções.",
-            "b2": "Construo interfaces com React, Next.js e TypeScript e APIs REST com Node.js, incluindo integrações com APIs de terceiros.",
-            "b3": "Modelo e administro bancos PostgreSQL/Supabase, criando e otimizando consultas SQL com foco em integridade e desempenho.",
-            "b4": "Implemento autenticação, autorização, gestão de perfis e permissões e políticas de Row Level Security, seguindo boas práticas de segurança e da LGPD.",
-            "b5": "Planejo e executo testes, corrijo bugs, presto suporte aos usuários finais e organizo as entregas em sprints no Trello."
+            "b1": "Desenvolvo e mantenho sistemas internos e PWAs para diferentes áreas da empresa, do levantamento de requisitos à implantação, com React, Next.js, TypeScript, Node.js e PostgreSQL/Supabase.",
+            "b2": "Criei a separação automática de contracheques com IA: o usuário envia um único PDF, a IA identifica cada colaborador e cada documento segue para a assinatura eletrônica da pessoa certa.",
+            "b3": "Criei lembretes de pagamento gerados por IA, com envio por WhatsApp.",
+            "b4": "Participei da central de chamados com IA, que reescreve pedidos em linguagem técnica, prioriza e aponta chamados parecidos, e da leitura automática de certidões, comprovantes e extratos.",
+            "b5": "Implemento autenticação, perfis, permissões e Row Level Security, seguindo boas práticas de segurança e da LGPD."
           }
         },
         "unipe": {
           "role": "Desenvolvedor Front-End",
-          "company": "Fábrica de Software · UNIPÊ",
+          "company": "Fábrica de Software · Unipê",
           "period": "fev 2025 – dez 2025",
           "bullets": {
             "b1": "Desenvolvi interfaces responsivas e escaláveis com React, Next.js e TypeScript, aplicando arquitetura em camadas para separar regras de negócio e interface.",
@@ -112,8 +110,8 @@
       "title": "Formação acadêmica",
       "items": {
         "unipe": {
-          "degree": "Tecnólogo em Sistemas para Internet",
-          "school": "Centro Universitário de João Pessoa (UNIPÊ)",
+          "degree": "Formado em Sistemas para Internet",
+          "school": "Unipê",
           "period": "Concluído em jul 2026"
         },
         "descomplica": {
@@ -202,11 +200,11 @@
       "psybookings": {
         "title": "S&M PsyBookings",
         "tagline": "Landing page para uma agência de bookings de psytrance.",
-        "description": "Página institucional com identidade retrofuturista, vídeo de fundo, carrossel de depoimentos e animações de rolagem, construída sem frameworks.",
+        "description": "Página institucional com identidade retrofuturista, vídeo de fundo e chamadas de booking no menu, nos cards dos artistas e no contato. Construída sem frameworks, com JavaScript organizado em classes.",
         "highlights": {
-          "h1": "Design system em variáveis CSS com layouts em Flexbox e Grid.",
-          "h2": "Animações de rolagem com Intersection Observer e respeito a prefers-reduced-motion.",
-          "h3": "Carrossel de depoimentos com suporte a toque e mouse em JavaScript puro."
+          "h1": "Hero em tela cheia com entrada em cascata, parallax e barra de progresso de leitura.",
+          "h2": "Cards de artistas com inclinação 3D no hover e carrossel de depoimentos com suporte a toque e mouse.",
+          "h3": "Animações com Intersection Observer que respeitam prefers-reduced-motion, além de ARIA e foco visível."
         }
       },
       "techstationApi": {
@@ -232,7 +230,6 @@
     "description": "Vagas Full Stack, projetos freelance ou uma dúvida sobre algum projeto: escreva pelo formulário ou por um dos canais diretos.",
     "channelsTitle": "Canais diretos",
     "locationLabel": "Localização",
-    "responseTime": "Costumo responder em até dois dias úteis.",
     "form": {
       "legend": "Formulário de contato",
       "name": "Nome",
@@ -253,7 +250,6 @@
         "emailInvalid": "Informe um e-mail válido.",
         "subjectRequired": "Informe o assunto.",
         "messageRequired": "A mensagem não pode ficar vazia.",
-        "submit": "Não foi possível enviar a mensagem.",
         "submitLater": "Não foi possível enviar a mensagem. Tente novamente mais tarde ou use o e-mail direto."
       },
       "success": {
@@ -264,10 +260,8 @@
     }
   },
   "footer": {
-    "tagline": "Desenvolvedor Full Stack · React, Next.js e Node.js",
     "builtWith": "Feito com Next.js, Tailwind CSS e Motion.",
-    "rights": "© {year} Nielson Gomes",
-    "linksLabel": "Links do rodapé"
+    "rights": "© {year} Nielson Gomes"
   },
   "notFound": {
     "eyebrow": "Erro 404",
@@ -283,7 +277,7 @@
     },
     "about": {
       "title": "Sobre",
-      "description": "Trajetória, experiência na Bloco Construções e na Fábrica de Software da UNIPÊ, formação e tecnologias de Nielson Gomes, Desenvolvedor Full Stack."
+      "description": "Trajetória, experiência na Bloco Construções e na Fábrica de Software da Unipê, formação e tecnologias de Nielson Gomes, Desenvolvedor Full Stack."
     },
     "projects": {
       "title": "Projetos",

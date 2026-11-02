@@ -71,17 +71,15 @@ export function ContactForm() {
         body: JSON.stringify(values),
       });
 
-      const payload = (await response.json().catch(() => null)) as { message?: string } | null;
-
       if (!response.ok) {
-        throw new Error(payload?.message || t("errors.submit"));
+        throw new Error(`Contact request failed with status ${response.status}`);
       }
 
       form.reset();
       setStatus("success");
     } catch (error) {
       console.error("Contact form error:", error);
-      setSubmitError(error instanceof Error ? error.message : t("errors.submitLater"));
+      setSubmitError(t("errors.submitLater"));
       setStatus("idle");
     }
   };
@@ -115,6 +113,7 @@ export function ContactForm() {
     <form
       onSubmit={handleSubmit}
       noValidate
+      data-spotlight=""
       className="flex flex-col gap-5 rounded-2xl border border-border bg-bg-elevated p-6 sm:p-8"
       aria-label={t("legend")}
     >
@@ -128,6 +127,7 @@ export function ContactForm() {
             name="user_name"
             type="text"
             autoComplete="name"
+            maxLength={200}
             placeholder={t("placeholders.name")}
             onChange={() => clearError("user_name")}
             aria-invalid={Boolean(errors.user_name)}
@@ -147,6 +147,7 @@ export function ContactForm() {
             type="email"
             autoComplete="email"
             inputMode="email"
+            maxLength={200}
             placeholder={t("placeholders.email")}
             onChange={() => clearError("user_email")}
             aria-invalid={Boolean(errors.user_email)}
@@ -165,6 +166,7 @@ export function ContactForm() {
           id={fieldId("subject")}
           name="subject"
           type="text"
+          maxLength={200}
           placeholder={t("placeholders.subject")}
           onChange={() => clearError("subject")}
           aria-invalid={Boolean(errors.subject)}
@@ -182,6 +184,7 @@ export function ContactForm() {
           id={fieldId("message")}
           name="message"
           rows={6}
+          maxLength={5000}
           placeholder={t("placeholders.message")}
           onChange={() => clearError("message")}
           aria-invalid={Boolean(errors.message)}
@@ -191,14 +194,13 @@ export function ContactForm() {
         {renderError("message")}
       </div>
 
-      {/* Honeypot: hidden from people, filled by naive bots. */}
       <div className="hidden" aria-hidden="true">
         <label htmlFor={`${id}-website`}>Website</label>
         <input id={`${id}-website`} name="website" type="text" tabIndex={-1} autoComplete="off" />
       </div>
 
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <Button type="submit" size="lg" disabled={status === "submitting"} className="group self-start">
+        <Button type="submit" size="lg" magnetic disabled={status === "submitting"} className="group self-start">
           {status === "submitting" ? t("sending") : t("send")}
           <Send
             size={16}

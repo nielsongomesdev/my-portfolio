@@ -20,7 +20,13 @@ export function Approach() {
 
         <ul className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-3">
           {items.map(({ key, icon: Icon }, index) => (
-            <Reveal key={key} as="li" delay={index * 0.08} className="flex flex-col gap-4 bg-bg-elevated p-7 sm:p-8">
+            <Reveal
+              key={key}
+              as="li"
+              spotlight
+              delay={index * 0.08}
+              className="flex flex-col gap-4 bg-bg-elevated p-7 sm:p-8"
+            >
               <span className="inline-flex size-10 items-center justify-center rounded-lg bg-accent-soft text-accent">
                 <Icon size={20} aria-hidden="true" />
               </span>
