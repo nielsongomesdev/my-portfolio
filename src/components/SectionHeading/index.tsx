@@ -6,7 +6,6 @@ type SectionHeadingProps = {
   description?: string;
   as?: "h1" | "h2" | "h3";
   className?: string;
-  /** Larger type for page-level headings. */
   size?: "page" | "section";
 };
 

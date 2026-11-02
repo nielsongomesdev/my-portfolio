@@ -1,9 +1,19 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { JetBrains_Mono, Outfit } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { Footer, Header, MobileNav, Providers, SkipLink } from "@/components";
+import {
+  Aurora,
+  CursorEffects,
+  Footer,
+  Header,
+  MobileNav,
+  Providers,
+  ScrollProgress,
+  SkipLink,
+  SmoothScroll,
+} from "@/components";
 import { site } from "@/data";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
@@ -25,6 +35,11 @@ type LocaleLayoutProps = Readonly<{
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }>;
+
+export const viewport: Viewport = {
+  themeColor: "#0a0a0b",
+  colorScheme: "dark",
+};
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -107,8 +122,12 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       <body className="font-sans">
         <NextIntlClientProvider>
           <Providers>
+            <SmoothScroll />
+            <ScrollProgress />
             <SkipLink />
             <div className="site-backdrop" aria-hidden="true" />
+            <Aurora />
+            <CursorEffects />
             <Header />
             <main id="content" className="pt-16">
               {children}
@@ -119,8 +138,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         </NextIntlClientProvider>
         <script
           type="application/ld+json"
-          // Static, server-generated JSON derived from local constants only.
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema).replace(/</g, "\\u003c") }}
         />
       </body>
     </html>

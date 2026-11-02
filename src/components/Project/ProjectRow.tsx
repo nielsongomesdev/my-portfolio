@@ -1,8 +1,8 @@
 import { useTranslations } from "next-intl";
+import { TechList } from "@/components/TechChip";
 import type { Project } from "@/data";
 import { ProjectLinks } from "./ProjectLinks";
 
-/** Compact, text-only presentation for projects without a screenshot. */
 export function ProjectRow({ project }: { project: Project }) {
   const t = useTranslations("projects");
   const item = `items.${project.key}` as const;
@@ -16,10 +16,10 @@ export function ProjectRow({ project }: { project: Project }) {
         </p>
         <h3 className="text-lg font-semibold tracking-tight">{title}</h3>
         <p className="text-sm leading-relaxed text-fg-muted sm:text-base">{t(`${item}.description`)}</p>
-        <p className="font-mono text-xs tracking-wide text-fg-subtle">{project.techs.join(" · ")}</p>
+        <TechList items={project.techs} className="mt-2" />
       </div>
 
-      <ProjectLinks project={project} title={title} size="sm" className="md:justify-end" />
+      <ProjectLinks project={project} title={title} size="sm" tone="quiet" className="md:justify-end" />
     </article>
   );
 }

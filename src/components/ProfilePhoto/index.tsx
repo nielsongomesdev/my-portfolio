@@ -8,11 +8,6 @@ type ProfilePhotoProps = {
   priority?: boolean;
 };
 
-/**
- * `cutout`: the transparent PNG anchored to the bottom of its box, with a
- * soft accent glow behind and a fade into the page background.
- * `avatar`: circular crop of the head and shoulders.
- */
 export function ProfilePhoto({ alt, variant = "cutout", className, priority = false }: ProfilePhotoProps) {
   if (variant === "avatar") {
     return (

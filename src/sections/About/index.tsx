@@ -43,7 +43,10 @@ export function About() {
           </div>
 
           <Reveal delay={0.2} className="lg:col-span-4 lg:col-start-9">
-            <dl className="flex flex-col divide-y divide-border rounded-2xl border border-border bg-bg-elevated">
+            <dl
+              data-spotlight=""
+              className="flex flex-col divide-y divide-border rounded-2xl border border-border bg-bg-elevated"
+            >
               {facts.map(({ labelKey, valueKey, icon: Icon }) => (
                 <div key={valueKey} className="relative flex flex-col gap-0.5 py-5 pr-5 pl-13">
                   <Icon size={18} aria-hidden="true" className="absolute top-5.5 left-5 text-accent" />
@@ -110,6 +113,7 @@ export function About() {
               <Reveal
                 key={key}
                 as="li"
+                spotlight
                 delay={index * 0.08}
                 className="flex flex-col gap-4 rounded-2xl border border-border bg-bg-elevated p-6"
               >

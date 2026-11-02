@@ -9,11 +9,6 @@ export type ProjectKey =
 
 export type ProjectType = "product" | "test" | "landing" | "api" | "academic";
 
-/**
- * `featured`: full-width card with screenshot, highlights and stack (home + projects page).
- * `secondary`: medium card with screenshot (projects page).
- * `compact`: text-only row, no screenshot available (projects page).
- */
 export type ProjectTier = "featured" | "secondary" | "compact";
 
 export type Project = {
@@ -21,7 +16,6 @@ export type Project = {
   type: ProjectType;
   tier: ProjectTier;
   techs: string[];
-  /** Number of `highlights.hN` entries available in the messages file. */
   highlights: number;
   liveUrl?: string;
   githubUrl?: string;
@@ -30,7 +24,6 @@ export type Project = {
   demoCredentials?: string;
 };
 
-// Ordered by professional relevance, not chronology.
 export const projects: Project[] = [
   {
     key: "techstation",
@@ -82,7 +75,7 @@ export const projects: Project[] = [
     highlights: 3,
     liveUrl: "https://sm-psybookings.com/",
     githubUrl: "https://github.com/nielsongomesdev/SM-PsyBookings",
-    image: { src: "/psybookings.png", width: 1342, height: 628 },
+    image: { src: "/psybookings.jpg", width: 1440, height: 590 },
   },
   {
     key: "techstationApi",

@@ -6,7 +6,7 @@ export type ButtonVariant = "primary" | "secondary" | "ghost";
 export type ButtonSize = "sm" | "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg font-medium transition-[color,background-color,border-color,transform] duration-200 ease-out-expo active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50";
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg font-medium transition-[color,background-color,border-color,transform,translate] duration-200 ease-out-expo active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50";
 
 const variants: Record<ButtonVariant, string> = {
   primary:
@@ -41,26 +41,27 @@ type ButtonLinkProps = {
   size?: ButtonSize;
   className?: string;
   children: React.ReactNode;
-  /** Forces a plain <a> (new tab). Inferred for http(s), mailto and files. */
   external?: boolean;
+  magnetic?: boolean;
   "aria-label"?: string;
 };
 
 const isExternalHref = (href: string) => /^(https?:|mailto:|tel:)/.test(href) || /\.[a-z0-9]+$/i.test(href);
 
-export function ButtonLink({ href, variant, size, className, children, external, ...rest }: ButtonLinkProps) {
+export function ButtonLink({ href, variant, size, className, children, external, magnetic, ...rest }: ButtonLinkProps) {
   const classes = buttonClasses({ variant, size, className });
+  const magnetProps = magnetic ? { "data-magnetic": "" } : {};
 
   if (external ?? isExternalHref(href)) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={classes} {...rest}>
+      <a href={href} target="_blank" rel="noopener noreferrer" className={classes} {...magnetProps} {...rest}>
         {children}
       </a>
     );
   }
 
   return (
-    <Link href={href as InternalHref} className={classes} {...rest}>
+    <Link href={href as InternalHref} className={classes} {...magnetProps} {...rest}>
       {children}
     </Link>
   );
@@ -69,8 +70,16 @@ export function ButtonLink({ href, variant, size, className, children, external,
 type ButtonProps = ComponentProps<"button"> & {
   variant?: ButtonVariant;
   size?: ButtonSize;
+  magnetic?: boolean;
 };
 
-export function Button({ variant, size, className, type = "button", ...rest }: ButtonProps) {
-  return <button type={type} className={buttonClasses({ variant, size, className })} {...rest} />;
+export function Button({ variant, size, className, type = "button", magnetic, ...rest }: ButtonProps) {
+  return (
+    <button
+      type={type}
+      className={buttonClasses({ variant, size, className })}
+      data-magnetic={magnetic ? "" : undefined}
+      {...rest}
+    />
+  );
 }

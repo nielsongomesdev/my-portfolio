@@ -10,13 +10,6 @@ const GRAB_DISTANCE = 170;
 const MAX_PARTICLES = 80;
 const MIN_PARTICLES = 18;
 
-/**
- * Lightweight constellation background (dots + faint links, cursor "grab").
- * Written on a plain <canvas> instead of a particles library: ~2 KB of code,
- * no extra dependency. It only animates while visible in the viewport and the
- * tab is active, caps the pixel ratio at 2, uses fewer particles on touch
- * devices and renders a single static frame under `prefers-reduced-motion`.
- */
 export function ParticleField({ className }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
