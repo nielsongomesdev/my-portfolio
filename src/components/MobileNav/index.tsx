@@ -5,7 +5,6 @@ import { navItems } from "@/components/Nav/items";
 import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/utils/cn";
 
-/** Bottom tab bar for small screens. Labels are visible, not hover-only. */
 export function MobileNav() {
   const t = useTranslations("nav");
   const pathname = usePathname();

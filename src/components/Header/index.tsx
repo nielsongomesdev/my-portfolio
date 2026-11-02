@@ -20,14 +20,8 @@ export function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-bg/80 backdrop-blur-md">
       <div className="container-page flex h-16 items-center justify-between gap-6">
-        <Link
-          href="/"
-          className="group flex items-baseline gap-2 text-[15px] font-semibold tracking-tight text-fg"
-        >
-          <span>{tc("name")}</span>
-          <span className="hidden font-mono text-xs font-medium uppercase tracking-[0.18em] text-fg-subtle transition-colors group-hover:text-accent sm:inline">
-            / full stack
-          </span>
+        <Link href="/" className="text-[15px] font-semibold tracking-tight text-fg transition-colors hover:text-accent">
+          {tc("name")}
         </Link>
 
         <nav aria-label={t("label")} className="hidden md:block">

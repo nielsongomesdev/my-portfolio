@@ -1,9 +1,8 @@
-import { ArrowRight, FileText } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { ButtonLink, Eyebrow, ParticleField, ProfilePhoto, TechList } from "@/components";
-import { coreStack, site } from "@/data";
+import { ButtonLink, ParticleField, ProfilePhoto } from "@/components";
+import { site } from "@/data";
 
-/** Staggered CSS entrance (no JS needed, keeps LCP early). */
 const rise = (step: number) => ({ animationDelay: `${step * 70}ms` });
 
 export function Hero() {
@@ -19,17 +18,20 @@ export function Hero() {
             <ProfilePhoto alt={t("photoAlt")} variant="avatar" className="size-14 lg:hidden" priority />
             <p className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-border bg-bg-elevated/80 py-1.5 pr-3.5 pl-2.5 font-mono text-xs font-medium tracking-wide text-fg-muted">
               <span className="relative flex size-2">
-                <span className="absolute inline-flex size-full animate-ping rounded-full bg-success/60 motion-reduce:hidden" />
+                <span className="absolute inline-flex size-full animate-pulse-dot rounded-full bg-success/70 motion-reduce:hidden" />
                 <span className="relative inline-flex size-2 rounded-full bg-success" />
               </span>
               {t("available")}
             </p>
           </div>
 
-          <div className="flex flex-col gap-5">
-            <div className="animate-rise" style={rise(1)}>
-              <Eyebrow>{t("eyebrow")}</Eyebrow>
-            </div>
+          <div className="flex flex-col gap-4">
+            <p
+              className="animate-rise text-xl font-semibold tracking-tight text-accent sm:text-2xl"
+              style={rise(1)}
+            >
+              {t("eyebrow")}
+            </p>
             <h1
               className="animate-rise-solid max-w-[16ch] text-4xl font-semibold leading-[1.06] tracking-tight text-balance sm:text-5xl lg:text-6xl"
               style={rise(2)}
@@ -44,33 +46,20 @@ export function Hero() {
             </p>
           </div>
 
-          <div
-            className="animate-rise flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
-            style={rise(4)}
-          >
-            <ButtonLink href="/projects" size="lg" className="group w-full sm:w-auto">
-              {t("primaryCta")}
+          <div className="animate-rise flex flex-col gap-3 sm:flex-row sm:items-center" style={rise(4)}>
+            <ButtonLink href="/contact" size="lg" magnetic className="group w-full sm:w-auto">
+              {t("contactCta")}
               <ArrowRight
                 size={18}
                 aria-hidden="true"
                 className="transition-transform duration-200 ease-out-expo group-hover:translate-x-0.5"
               />
             </ButtonLink>
-            <ButtonLink href="/contact" variant="secondary" size="lg" className="w-full sm:w-auto">
-              {t("secondaryCta")}
-            </ButtonLink>
-            <ButtonLink href={site.cv} variant="ghost" size="lg" className="self-start sm:self-auto">
-              <FileText size={16} aria-hidden="true" />
-              {tc("cv")}
+            <ButtonLink href={site.cv} variant="secondary" size="lg" magnetic className="w-full sm:w-auto">
+              <Download size={16} aria-hidden="true" />
+              {t("cvCta")}
               <span className="sr-only"> ({tc("newTab")})</span>
             </ButtonLink>
-          </div>
-
-          <div className="animate-rise flex flex-col gap-3 border-t border-border pt-6" style={rise(5)}>
-            <p className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-fg-subtle">
-              {t("stackLabel")}
-            </p>
-            <TechList items={coreStack} />
           </div>
         </div>
 

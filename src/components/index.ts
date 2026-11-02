@@ -1,4 +1,6 @@
+export { Aurora } from "./Aurora";
 export { Button, ButtonLink, buttonClasses } from "./Button";
+export { CursorEffects } from "./CursorEffects";
 export { Footer } from "./Footer";
 export { Header } from "./Header";
 export { LanguageSwitcher } from "./LanguageSwitcher";
@@ -11,5 +13,7 @@ export { ProjectRow } from "./Project/ProjectRow";
 export { Providers } from "./Providers";
 export { Reveal, revealEase } from "./Reveal";
 export { Eyebrow, SectionHeading } from "./SectionHeading";
+export { ScrollProgress } from "./ScrollProgress";
 export { SkipLink } from "./SkipLink";
+export { SmoothScroll } from "./SmoothScroll";
 export { TechChip, TechList } from "./TechChip";
