@@ -78,7 +78,13 @@ export default async function OpenGraphImage({ params }: Props) {
               background: "radial-gradient(circle at 50% 55%, rgba(239,68,68,0.38), rgba(239,68,68,0) 62%)",
             }}
           />
-          <img src={photoSrc} alt="" width={400} height={600} style={{ position: "absolute", bottom: 0 }} />
+          <img
+            src={photoSrc}
+            alt=""
+            width={400}
+            height={600}
+            style={{ position: "absolute", bottom: 0, maskImage: "linear-gradient(to right, black 74%, transparent)" }}
+          />
           <div
             style={{
               position: "absolute",

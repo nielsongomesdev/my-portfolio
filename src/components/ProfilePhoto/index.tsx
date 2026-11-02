@@ -38,10 +38,11 @@ export function ProfilePhoto({ alt, variant = "cutout", className, priority = fa
       <Image
         src="/profile.png"
         alt={alt}
-        fill
+        width={819}
+        height={1229}
         sizes="(min-width: 1024px) 520px, 1px"
         priority={priority}
-        className="object-contain object-bottom drop-shadow-[0_24px_48px_rgba(0,0,0,0.5)]"
+        className="absolute bottom-0 left-1/2 h-full w-auto max-w-none -translate-x-1/2 drop-shadow-[0_24px_48px_rgba(0,0,0,0.5)] [mask-image:linear-gradient(to_right,black_74%,transparent)]"
       />
       <div
         aria-hidden="true"
