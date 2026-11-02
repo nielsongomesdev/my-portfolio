@@ -1,37 +1,28 @@
 @import "tailwindcss";
 
 @theme {
-  /* Surfaces */
   --color-bg: #0a0a0b;
   --color-bg-elevated: #111113;
   --color-bg-subtle: #18181b;
 
-  /* Borders */
   --color-border: oklch(100% 0 0 / 8%);
   --color-border-strong: oklch(100% 0 0 / 16%);
 
-  /* Text */
   --color-fg: #f4f4f5;
   --color-fg-muted: #a1a1aa;
   --color-fg-subtle: #8b8b94;
 
-  /* Accent (single brand color, used sparingly).
-     `accent` is for text/icons on dark surfaces (4.6:1 on bg);
-     `accent-solid` is for filled buttons with white text (4.8:1). */
   --color-accent: #ef4444;
   --color-accent-solid: #dc2626;
   --color-accent-solid-hover: #b91c1c;
   --color-accent-soft: oklch(63.7% 0.237 25.3 / 12%);
   --color-accent-fg: #ffffff;
 
-  /* Status */
   --color-success: #22c55e;
 
-  /* Typography */
   --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", Menlo, monospace;
 
-  /* Motion */
   --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -62,7 +53,6 @@
     border-radius: 4px;
   }
 
-  /* Subtle, non-hidden scrollbar */
   * {
     scrollbar-width: thin;
     scrollbar-color: oklch(100% 0 0 / 18%) transparent;
@@ -83,6 +73,164 @@
   }
 }
 
+html.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.site-aurora {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.site-aurora__blob {
+  position: absolute;
+  border-radius: 9999px;
+  will-change: transform;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.site-aurora__blob--a {
+  top: 10%;
+  left: -15%;
+  width: 70vmax;
+  height: 70vmax;
+  background: radial-gradient(circle, oklch(63.7% 0.237 25.3 / 11%), transparent 68%);
+  animation-name: aurora-drift-a;
+  animation-duration: 38s;
+}
+
+.site-aurora__blob--b {
+  right: -20%;
+  bottom: -25%;
+  width: 80vmax;
+  height: 80vmax;
+  background: radial-gradient(circle, oklch(52% 0.2 18 / 10%), transparent 66%);
+  animation-name: aurora-drift-b;
+  animation-duration: 46s;
+}
+
+.site-aurora__blob--c {
+  top: 35%;
+  left: 40%;
+  width: 45vmax;
+  height: 45vmax;
+  background: radial-gradient(circle, oklch(68% 0.16 40 / 6%), transparent 70%);
+  animation-name: aurora-drift-c;
+  animation-duration: 32s;
+}
+
+@keyframes aurora-drift-a {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(18vw, 12vh, 0) scale(1.15);
+  }
+}
+
+@keyframes aurora-drift-b {
+  from {
+    transform: translate3d(0, 0, 0) scale(1.1);
+  }
+  to {
+    transform: translate3d(-16vw, -14vh, 0) scale(0.95);
+  }
+}
+
+@keyframes aurora-drift-c {
+  from {
+    transform: translate3d(-10vw, 6vh, 0) scale(0.9);
+  }
+  to {
+    transform: translate3d(12vw, -8vh, 0) scale(1.1);
+  }
+}
+
+@media (max-width: 767px) {
+  .site-aurora__blob {
+    opacity: 0.7;
+  }
+
+  .site-aurora__blob--c {
+    display: none;
+  }
+}
+
+.cursor-halo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 520px;
+  height: 520px;
+  border-radius: 9999px;
+  pointer-events: none;
+  background: radial-gradient(circle, oklch(63.7% 0.237 25.3 / 13%), transparent 62%);
+  opacity: 0;
+  transition:
+    opacity 0.4s ease,
+    scale 0.4s var(--ease-out-expo);
+}
+
+.cursor-halo[data-visible="true"] {
+  opacity: 1;
+}
+
+.cursor-halo[data-hover="true"] {
+  scale: 1.18;
+  background: radial-gradient(circle, oklch(63.7% 0.237 25.3 / 19%), transparent 62%);
+}
+
+[data-spotlight] {
+  position: relative;
+  isolation: isolate;
+}
+
+[data-spotlight]::before,
+[data-spotlight]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+[data-spotlight]::before {
+  z-index: -1;
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    oklch(63.7% 0.237 25.3 / 8%),
+    transparent 60%
+  );
+}
+
+[data-spotlight]::after {
+  padding: 1px;
+  background: radial-gradient(
+    320px circle at var(--mx, 50%) var(--my, 50%),
+    oklch(63.7% 0.237 25.3 / 55%),
+    transparent 65%
+  );
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  [data-spotlight]:hover::before,
+  [data-spotlight]:hover::after {
+    opacity: 1;
+  }
+}
+
 @utility container-page {
   margin-inline: auto;
   width: 100%;
@@ -94,8 +242,6 @@
   }
 }
 
-/* Faint static texture behind the whole site: a soft accent glow at the top
-   and a fine grid that fades out. CSS only, no JS, no paint cost on scroll. */
 @utility site-backdrop {
   position: fixed;
   inset: 0;
@@ -116,9 +262,6 @@
   text-wrap: balance;
 }
 
-/* Entrance animations that run without JavaScript. Above-the-fold content
-   is never server-rendered as invisible, so LCP is not delayed by hydration.
-   The reduced-motion rule in @layer base collapses them to ~0ms. */
 @keyframes rise {
   from {
     opacity: 0;
@@ -145,8 +288,6 @@
   animation: rise 0.65s var(--ease-out-expo) both;
 }
 
-/* Transform-only variant for the hero headline: it is the page's largest
-   content, so it must never start invisible (keeps LCP at first paint). */
 @keyframes rise-solid {
   from {
     transform: translateY(16px);
@@ -162,4 +303,35 @@
 
 @utility animate-page-in {
   animation: page-in 0.3s var(--ease-out-expo) both;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes tooltip-in {
+  from {
+    opacity: 0;
+    margin-bottom: 4px;
+  }
+  to {
+    opacity: 1;
+    margin-bottom: 8px;
+  }
+}
+
+@utility animate-tooltip-in {
+  animation: tooltip-in 0.15s var(--ease-out-expo) both;
+}
+
+@utility animate-pulse-dot {
+  animation: pulse-dot 2.4s ease-out infinite;
 }

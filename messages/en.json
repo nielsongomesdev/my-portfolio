@@ -9,7 +9,7 @@
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "email": "Email",
-    "cv": "Resume (PDF)",
+    "cv": "Resume",
     "newTab": "opens in a new tab"
   },
   "nav": {
@@ -20,14 +20,13 @@
     "contact": "Contact"
   },
   "hero": {
-    "available": "Open to Full Stack opportunities",
-    "eyebrow": "Full Stack Developer · João Pessoa, Brazil",
+    "available": "Open to new opportunities",
+    "eyebrow": "Full Stack Developer",
     "title": "End-to-end systems, from requirements to deployment.",
     "description": "I build interfaces, APIs and databases across the whole cycle: from requirements gathering to deployment and evolving the system in production, with a focus on clean code, security and maintainability.",
-    "primaryCta": "View projects",
-    "secondaryCta": "Get in touch",
-    "stackLabel": "Core stack",
-    "photoAlt": "Photo of Nielson Gomes smiling, wearing a red t-shirt"
+    "photoAlt": "Photo of Nielson Gomes smiling, wearing a red t-shirt",
+    "contactCta": "Get in touch",
+    "cvCta": "Download resume"
   },
   "home": {
     "featured": {
@@ -56,18 +55,17 @@
     },
     "contactCta": {
       "title": "Shall we talk about the next project?",
-      "description": "I'm open to Full Stack roles, freelance work and collaborations. I usually reply within two business days.",
-      "primary": "Send a message",
-      "secondary": "View resume"
+      "description": "I'm open to Full Stack roles, freelance work and collaborations.",
+      "primary": "Send a message"
     }
   },
   "about": {
     "eyebrow": "About me",
     "title": "Full Stack Developer in the TypeScript ecosystem, focused on clean code, security and maintainability.",
-    "lead": "Technologist in Internet Systems from UNIPÊ and currently pursuing a bachelor's degree in Software Engineering. I develop and maintain internal corporate systems at Bloco Construções, taking part in the whole cycle: requirements gathering with business teams, database modeling, REST APIs and interfaces, testing and deployment.",
+    "lead": "Graduated in Internet Systems from Unipê and currently pursuing a bachelor's degree in Software Engineering. I develop and maintain internal corporate systems at Bloco Construções, taking part in the whole cycle: requirements gathering with business teams, database modeling, REST APIs and interfaces, testing and deployment.",
     "paragraphs": {
       "p1": "On the front end, I turn high-fidelity prototypes into reusable, typed and responsive components with React, Next.js and TypeScript. On the back end, I structure layered REST APIs with Node.js, model PostgreSQL and Supabase databases and implement authentication, permission control and Row Level Security policies.",
-      "p2": "I use AI as a support tool to speed up testing, refactoring and debugging, while keeping review and final decisions about the code under my responsibility. As complementary knowledge, I'm studying Java with Spring Boot, AWS and Docker.",
+      "p2": "I use AI both in development, to speed up testing, refactoring and debugging, and in products, integrating language models to read documents and automate tasks. Review and final decisions about the code are mine.",
       "p3": "Away from the screen, I recharge in nature and watching a good anime."
     },
     "facts": {
@@ -87,16 +85,16 @@
           "company": "Bloco Construções",
           "period": "Jun 2026 – present",
           "bullets": {
-            "b1": "Develop and maintain internal systems for different areas of the company, from requirements gathering to deployment, maintenance and evolution.",
-            "b2": "Build interfaces with React, Next.js and TypeScript and REST APIs with Node.js, including third-party API integrations.",
-            "b3": "Model and manage PostgreSQL/Supabase databases, writing and optimizing SQL queries with a focus on data integrity and performance.",
-            "b4": "Implement authentication, authorization, role and permission management and Row Level Security policies, following security and LGPD best practices.",
-            "b5": "Plan and run tests, fix bugs, support end users and organize deliveries in sprints on Trello."
+            "b1": "Develop and maintain internal systems and PWAs for different areas of the company, from requirements gathering to deployment, with React, Next.js, TypeScript, Node.js and PostgreSQL/Supabase.",
+            "b2": "Built AI-powered payslip splitting: the user uploads a single PDF, the AI identifies each employee and every document goes to the right person for e-signature.",
+            "b3": "Built AI-generated payment reminders, delivered via WhatsApp.",
+            "b4": "Took part in an AI-powered help desk that rewrites requests in technical language, prioritizes them and flags similar tickets, and in automated reading of certificates, receipts and bank statements.",
+            "b5": "Implement authentication, roles, permissions and Row Level Security, following security and LGPD (Brazilian data protection law) best practices."
           }
         },
         "unipe": {
           "role": "Front-End Developer",
-          "company": "Software Factory · UNIPÊ",
+          "company": "Software Factory · Unipê",
           "period": "Feb 2025 – Dec 2025",
           "bullets": {
             "b1": "Built responsive, scalable interfaces with React, Next.js and TypeScript, applying layered architecture to separate business rules from the interface.",
@@ -112,8 +110,8 @@
       "title": "Academic background",
       "items": {
         "unipe": {
-          "degree": "Technologist in Internet Systems",
-          "school": "Centro Universitário de João Pessoa (UNIPÊ)",
+          "degree": "Graduated in Internet Systems",
+          "school": "Unipê",
           "period": "Completed Jul 2026"
         },
         "descomplica": {
@@ -202,11 +200,11 @@
       "psybookings": {
         "title": "S&M PsyBookings",
         "tagline": "Landing page for a psytrance booking agency.",
-        "description": "Institutional page with a retro-futuristic identity, background video, testimonial carousel and scroll animations, built without frameworks.",
+        "description": "Institutional page with a retro-futuristic identity, background video and booking calls to action in the menu, artist cards and contact section. Built without frameworks, with JavaScript organized in classes.",
         "highlights": {
-          "h1": "Design system in CSS variables with Flexbox and Grid layouts.",
-          "h2": "Scroll animations with Intersection Observer and prefers-reduced-motion support.",
-          "h3": "Testimonial carousel with touch and mouse support in vanilla JavaScript."
+          "h1": "Full-screen hero with staggered entrance, parallax and a reading progress bar.",
+          "h2": "Artist cards with 3D tilt on hover and a testimonial carousel with touch and mouse support.",
+          "h3": "Intersection Observer animations that respect prefers-reduced-motion, plus ARIA and visible focus."
         }
       },
       "techstationApi": {
@@ -232,7 +230,6 @@
     "description": "Full Stack roles, freelance projects or a question about some project: write through the form or through one of the direct channels.",
     "channelsTitle": "Direct channels",
     "locationLabel": "Location",
-    "responseTime": "I usually reply within two business days.",
     "form": {
       "legend": "Contact form",
       "name": "Name",
@@ -253,7 +250,6 @@
         "emailInvalid": "Please enter a valid email.",
         "subjectRequired": "Please enter a subject.",
         "messageRequired": "The message cannot be empty.",
-        "submit": "The message could not be sent.",
         "submitLater": "The message could not be sent. Please try again later or use the direct email."
       },
       "success": {
@@ -264,10 +260,8 @@
     }
   },
   "footer": {
-    "tagline": "Full Stack Developer · React, Next.js and Node.js",
     "builtWith": "Built with Next.js, Tailwind CSS and Motion.",
-    "rights": "© {year} Nielson Gomes",
-    "linksLabel": "Footer links"
+    "rights": "© {year} Nielson Gomes"
   },
   "notFound": {
     "eyebrow": "Error 404",
@@ -283,7 +277,7 @@
     },
     "about": {
       "title": "About",
-      "description": "Career path, experience at Bloco Construções and UNIPÊ's Software Factory, education and technologies of Nielson Gomes, Full Stack Developer."
+      "description": "Career path, experience at Bloco Construções and Unipê's Software Factory, education and technologies of Nielson Gomes, Full Stack Developer."
     },
     "projects": {
       "title": "Projects",

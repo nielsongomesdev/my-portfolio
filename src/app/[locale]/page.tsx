@@ -1,5 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
-import { Approach, ContactCta, FeaturedProjects, Hero } from "@/sections";
+import { Approach, FeaturedProjects, Hero } from "@/sections";
 
 type HomePageProps = {
   params: Promise<{ locale: string }>;
@@ -14,7 +14,6 @@ export default async function HomePage({ params }: HomePageProps) {
       <Hero />
       <FeaturedProjects />
       <Approach />
-      <ContactCta />
     </>
   );
 }

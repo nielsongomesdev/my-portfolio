@@ -1,59 +1,98 @@
 import { NextResponse } from "next/server";
 
 type ContactBody = {
-  name?: string;
-  email?: string;
-  message?: string;
-  subject?: string;
-  /** Honeypot field: real users never fill it in. */
-  website?: string;
+  name?: unknown;
+  email?: unknown;
+  message?: unknown;
+  subject?: unknown;
+  website?: unknown;
 };
 
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const MAX_FIELD_LENGTH = 2000;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const MAX_BODY_BYTES = 10_000;
+const MAX_LINE_LENGTH = 200;
+const MAX_MESSAGE_LENGTH = 5_000;
+
+const json = (message: string, status: number) => NextResponse.json({ message }, { status });
+
+const singleLine = (value: unknown, max: number) =>
+  typeof value === "string" ? value.replace(/[\r\n\t]+/g, " ").trim().slice(0, max) : "";
+
+const multiLine = (value: unknown, max: number) =>
+  typeof value === "string" ? value.trim().slice(0, max) : "";
+
+const isSameOrigin = (request: Request) => {
+  const origin = request.headers.get("origin");
+  const host = request.headers.get("x-forwarded-host") ?? request.headers.get("host");
+  if (!origin || !host) return false;
+
+  try {
+    return new URL(origin).host === host;
+  } catch {
+    return false;
+  }
+};
 
 export async function POST(request: Request) {
+  if (!isSameOrigin(request)) {
+    return json("Origem não permitida.", 403);
+  }
+
+  if (!request.headers.get("content-type")?.toLowerCase().startsWith("application/json")) {
+    return json("Formato inválido.", 415);
+  }
+
+  const declaredLength = Number(request.headers.get("content-length") ?? 0);
+  if (declaredLength > MAX_BODY_BYTES) {
+    return json("Mensagem muito longa.", 413);
+  }
+
+  let body: ContactBody;
   try {
-    const body = (await request.json()) as ContactBody;
-
-    // Bots that fill every field get a silent success and nothing is sent.
-    if (body.website?.trim()) {
-      return NextResponse.json({ message: "Mensagem enviada com sucesso." }, { status: 200 });
+    const raw = await request.text();
+    if (new TextEncoder().encode(raw).length > MAX_BODY_BYTES) {
+      return json("Mensagem muito longa.", 413);
     }
-
-    const name = body.name?.trim().slice(0, MAX_FIELD_LENGTH) || "";
-    const email = body.email?.trim().slice(0, MAX_FIELD_LENGTH) || "";
-    const message = body.message?.trim().slice(0, MAX_FIELD_LENGTH * 2) || "";
-    const subject = body.subject?.trim().slice(0, MAX_FIELD_LENGTH) || "Contato pelo portfólio";
-
-    if (!name || !email || !message) {
-      return NextResponse.json(
-        { message: "Campos obrigatórios: name, email e message." },
-        { status: 400 }
-      );
+    const parsed: unknown = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+      return json("Formato inválido.", 400);
     }
+    body = parsed as ContactBody;
+  } catch {
+    return json("Formato inválido.", 400);
+  }
 
-    if (!EMAIL_REGEX.test(email)) {
-      return NextResponse.json({ message: "E-mail inválido." }, { status: 400 });
-    }
+  if (singleLine(body.website, MAX_LINE_LENGTH)) {
+    return json("Mensagem enviada com sucesso.", 200);
+  }
 
-    const serviceId = process.env.EMAILJS_SERVICE_ID;
-    const templateId = process.env.EMAILJS_TEMPLATE_ID;
-    const publicKey = process.env.EMAILJS_PUBLIC_KEY;
-    const privateKey = process.env.EMAILJS_PRIVATE_KEY;
+  const name = singleLine(body.name, MAX_LINE_LENGTH);
+  const email = singleLine(body.email, MAX_LINE_LENGTH);
+  const subject = singleLine(body.subject, MAX_LINE_LENGTH) || "Contato pelo portfólio";
+  const message = multiLine(body.message, MAX_MESSAGE_LENGTH);
 
-    if (!serviceId || !templateId || !publicKey || !privateKey) {
-      return NextResponse.json(
-        { message: "Configuração de e-mail incompleta no servidor." },
-        { status: 500 }
-      );
-    }
+  if (!name || !email || !message) {
+    return json("Preencha nome, e-mail e mensagem.", 400);
+  }
 
+  if (!EMAIL_REGEX.test(email)) {
+    return json("E-mail inválido.", 400);
+  }
+
+  const serviceId = process.env.EMAILJS_SERVICE_ID;
+  const templateId = process.env.EMAILJS_TEMPLATE_ID;
+  const publicKey = process.env.EMAILJS_PUBLIC_KEY;
+  const privateKey = process.env.EMAILJS_PRIVATE_KEY;
+
+  if (!serviceId || !templateId || !publicKey || !privateKey) {
+    console.error("Contact route error: missing EmailJS environment variables.");
+    return json("Não foi possível enviar a mensagem agora.", 503);
+  }
+
+  try {
     const emailJsResponse = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         service_id: serviceId,
         template_id: templateId,
@@ -66,32 +105,17 @@ export async function POST(request: Request) {
           subject,
         },
       }),
+      signal: AbortSignal.timeout(10_000),
     });
 
     if (!emailJsResponse.ok) {
-      const errorText = await emailJsResponse.text();
-      console.error("EmailJS error:", errorText);
-
-      const normalizedError = errorText.toLowerCase();
-      if (normalizedError.includes("non-browser environments is currently disabled")) {
-        return NextResponse.json(
-          {
-            message:
-              "No EmailJS, ative 'API access from non-browser environments' em Account > Security.",
-          },
-          { status: 500 }
-        );
-      }
-
-      return NextResponse.json({ message: "Falha no provedor de e-mail." }, { status: 502 });
+      console.error("EmailJS error:", emailJsResponse.status, await emailJsResponse.text());
+      return json("Não foi possível enviar a mensagem agora.", 502);
     }
 
-    return NextResponse.json({ message: "Mensagem enviada com sucesso." }, { status: 200 });
+    return json("Mensagem enviada com sucesso.", 200);
   } catch (error) {
     console.error("Contact route error:", error);
-    return NextResponse.json(
-      { message: "Erro interno ao processar a solicitação." },
-      { status: 500 }
-    );
+    return json("Não foi possível enviar a mensagem agora.", 502);
   }
 }

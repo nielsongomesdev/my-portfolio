@@ -7,9 +7,7 @@ import { ProjectLinks } from "./ProjectLinks";
 
 type ProjectCardProps = {
   project: Project;
-  /** `featured` spans the full width; `secondary` fits a two-column grid. */
   layout?: "featured" | "secondary";
-  /** Heading level for the project title, so the page outline stays in order. */
   headingLevel?: "h2" | "h3";
   className?: string;
 };
@@ -26,6 +24,7 @@ export function ProjectCard({ project, layout = "featured", headingLevel = "h3",
 
   return (
     <article
+      data-spotlight=""
       className={cn(
         "group flex flex-col overflow-hidden rounded-2xl border border-border bg-bg-elevated transition-colors duration-300 hover:border-border-strong",
         className
@@ -45,7 +44,11 @@ export function ProjectCard({ project, layout = "featured", headingLevel = "h3",
             alt={t("labels.imageAlt", { name: title })}
             fill
             sizes={isFeatured ? "(min-width: 1152px) 1120px, 100vw" : "(min-width: 1024px) 560px, 100vw"}
-            className="object-cover object-top transition-transform duration-700 ease-out-expo group-hover:scale-[1.02]"
+            className="object-cover object-top brightness-[0.82] saturate-[0.9] transition-[transform,filter] duration-700 ease-out-expo group-hover:scale-[1.03] group-hover:brightness-100 group-hover:saturate-100"
+          />
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-linear-to-t from-bg-elevated via-bg-elevated/20 to-transparent transition-opacity duration-500 group-hover:opacity-60"
           />
         </a>
       )}

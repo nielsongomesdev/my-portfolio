@@ -9,15 +9,11 @@ type ProjectLinksProps = {
   project: Project;
   title: string;
   size?: "sm" | "md";
+  tone?: "prominent" | "quiet";
   className?: string;
 };
 
-/**
- * Visible labels stay short ("Ver projeto"); the project name and the
- * new-tab hint go into visually hidden text so screen readers get a
- * complete, unambiguous name that still contains the visible label.
- */
-export function ProjectLinks({ project, title, size = "md", className }: ProjectLinksProps) {
+export function ProjectLinks({ project, title, size = "md", tone = "prominent", className }: ProjectLinksProps) {
   const t = useTranslations("projects.labels");
   const tc = useTranslations("common");
   const isPrivate = !project.githubUrl;
@@ -30,7 +26,10 @@ export function ProjectLinks({ project, title, size = "md", className }: Project
           href={project.liveUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className={cn(buttonClasses({ variant: "primary", size }), "group/link")}
+          className={cn(
+            buttonClasses({ variant: tone === "prominent" ? "primary" : "secondary", size }),
+            "group/link"
+          )}
         >
           {t("live")}
           {hidden(title)}
