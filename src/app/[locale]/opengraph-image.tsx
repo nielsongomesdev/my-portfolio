@@ -88,8 +88,8 @@ export default async function OpenGraphImage({ params }: Props) {
           <div
             style={{
               position: "absolute",
-              left: 0,
-              right: 0,
+              left: "-15%",
+              right: "-15%",
               bottom: 0,
               height: 90,
               background: `linear-gradient(to top, ${BG}, rgba(10,10,11,0))`,

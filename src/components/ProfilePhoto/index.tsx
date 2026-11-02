@@ -33,8 +33,10 @@ export function ProfilePhoto({ alt, variant = "cutout", className, priority = fa
     <div className={cn("relative", className)}>
       <div
         aria-hidden="true"
-        className="absolute inset-x-[10%] bottom-0 top-[20%] rounded-full bg-accent/15 blur-3xl"
-      />
+        className="portrait-fade-bottom absolute -inset-x-[10%] -top-[10%] bottom-0"
+      >
+        <div className="absolute inset-x-1/6 top-[27%] bottom-0 rounded-full bg-accent/15 blur-3xl" />
+      </div>
       <Image
         src="/profile.png"
         alt={alt}
@@ -42,11 +44,7 @@ export function ProfilePhoto({ alt, variant = "cutout", className, priority = fa
         height={1229}
         sizes="(min-width: 1024px) 520px, 1px"
         priority={priority}
-        className="absolute bottom-0 left-1/2 h-full w-auto max-w-none -translate-x-1/2 drop-shadow-[0_24px_48px_rgba(0,0,0,0.5)] [mask-image:linear-gradient(to_right,black_74%,transparent)]"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-bg to-transparent"
+        className="absolute bottom-0 left-1/2 h-full w-auto max-w-none -translate-x-1/2 portrait-fade drop-shadow-[0_24px_48px_rgba(0,0,0,0.5)]"
       />
     </div>
   );

@@ -24,6 +24,9 @@
   --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", Menlo, monospace;
 
   --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --portrait-fade-right: 74%;
+  --portrait-fade-bottom: 6rem;
 }
 
 @layer base {
@@ -256,6 +259,17 @@ html.lenis.lenis-smooth {
     4rem 4rem,
     4rem 4rem;
   mask-image: linear-gradient(to bottom, black 0%, black 35%, transparent 90%);
+}
+
+@utility portrait-fade-bottom {
+  mask-image: linear-gradient(to top, transparent, black var(--portrait-fade-bottom));
+}
+
+@utility portrait-fade {
+  mask-image:
+    linear-gradient(to right, black var(--portrait-fade-right), transparent),
+    linear-gradient(to top, transparent, black var(--portrait-fade-bottom));
+  mask-composite: intersect;
 }
 
 @utility text-balance {
