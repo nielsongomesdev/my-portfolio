@@ -109,6 +109,8 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     url: `${site.url}${locale === "pt" ? "/pt" : ""}`,
     email: `mailto:${site.email}`,
     sameAs: [site.github, site.linkedin],
+    worksFor: { "@type": "Organization", name: site.employer },
+    alumniOf: { "@type": "CollegeOrUniversity", name: site.almaMater },
     address: {
       "@type": "PostalAddress",
       addressLocality: site.city,

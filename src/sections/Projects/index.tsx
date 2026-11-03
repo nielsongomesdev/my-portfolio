@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { ProjectCard, ProjectRow, Reveal, SectionHeading } from "@/components";
+import { ProjectCard, ProjectRow, Reveal, Rise, SectionHeading } from "@/components";
 import { compactProjects, featuredProjects, secondaryProjects } from "@/data";
 
 export function Projects() {
@@ -8,7 +8,7 @@ export function Projects() {
   return (
     <section>
       <div className="container-page flex flex-col gap-14 py-16 sm:py-20 lg:py-24">
-        <Reveal>
+        <Rise>
           <SectionHeading
             as="h1"
             size="page"
@@ -17,13 +17,13 @@ export function Projects() {
             description={t("description")}
             className="max-w-3xl"
           />
-        </Reveal>
+        </Rise>
 
         <div className="flex flex-col gap-6">
           {featuredProjects.map((project, index) => (
-            <Reveal key={project.key} delay={index * 0.08} y={20}>
-              <ProjectCard project={project} layout="featured" headingLevel="h2" />
-            </Reveal>
+            <Rise key={project.key} step={index + 1}>
+              <ProjectCard project={project} layout="featured" headingLevel="h2" priority={index === 0} />
+            </Rise>
           ))}
         </div>
 

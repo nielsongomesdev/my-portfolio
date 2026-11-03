@@ -1,9 +1,7 @@
 import { ArrowRight, Download } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { ButtonLink, ParticleField, ProfilePhoto } from "@/components";
+import { ButtonLink, ParticleField, ProfilePhoto, riseDelay as rise } from "@/components";
 import { site } from "@/data";
-
-const rise = (step: number) => ({ animationDelay: `${step * 70}ms` });
 
 export function Hero() {
   const t = useTranslations("hero");

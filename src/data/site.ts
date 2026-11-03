@@ -5,10 +5,13 @@ export const site = {
   email: "nielsongomes16@gmail.com",
   github: "https://github.com/nielsongomesdev",
   linkedin: "https://linkedin.com/in/nielsongomesdev",
+  certificates: "https://www.linkedin.com/in/nielsongomesdev/details/certifications/",
   cv: "/curriculo.pdf",
   city: "João Pessoa",
   region: "PB",
   country: "BR",
+  employer: "Bloco Construções",
+  almaMater: "Centro Universitário de João Pessoa (Unipê)",
 } as const;
 
 export type SkillGroupKey = "languages" | "frontend" | "backend" | "quality" | "tools" | "learning";

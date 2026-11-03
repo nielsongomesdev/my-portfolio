@@ -1,4 +1,4 @@
-import { ArrowUpRight, KeyRound, Lock } from "lucide-react";
+import { ArrowUpRight, Lock } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { FaGithub } from "react-icons/fa6";
 import { buttonClasses } from "@/components/Button";
@@ -79,14 +79,6 @@ export function ProjectLinks({ project, title, size = "md", tone = "prominent", 
         </span>
       )}
 
-      {project.demoCredentials && (
-        <p className="inline-flex items-center gap-2 rounded-md bg-bg-subtle px-2.5 py-1.5 font-mono text-xs text-fg-muted">
-          <KeyRound size={13} aria-hidden="true" className="text-accent" />
-          <span>
-            {t("demoAccess")}: <span className="text-fg">{project.demoCredentials}</span>
-          </span>
-        </p>
-      )}
     </div>
   );
 }

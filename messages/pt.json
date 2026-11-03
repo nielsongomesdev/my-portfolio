@@ -61,8 +61,8 @@
   },
   "about": {
     "eyebrow": "Sobre mim",
-    "title": "Desenvolvedor Full Stack no ecossistema TypeScript, com foco em código limpo, segurança e manutenibilidade.",
-    "lead": "Formado em Sistemas para Internet pela Unipê e graduando em Engenharia de Software. Desenvolvo e mantenho sistemas internos corporativos na Bloco Construções, participando de todo o ciclo: levantamento de requisitos com as áreas de negócio, modelagem de banco de dados, construção de APIs REST e interfaces, testes e implantação.",
+    "title": "Desenvolvedor Full Stack no ecossistema TypeScript.",
+    "lead": "Formado em Sistemas para Internet pela Unipê e graduando em Engenharia de Software. Hoje desenvolvo e mantenho os sistemas internos da Bloco Construções, acompanhando cada solução do levantamento de requisitos à evolução em produção.",
     "paragraphs": {
       "p1": "No front-end, transformo protótipos de alta fidelidade em componentes reutilizáveis, tipados e responsivos com React, Next.js e TypeScript. No back-end, estruturo APIs REST em camadas com Node.js, modelo bancos PostgreSQL e Supabase e implemento autenticação, controle de permissões e políticas de Row Level Security.",
       "p2": "Uso IA tanto no desenvolvimento, para acelerar testes, refatorações e depuração, quanto nos produtos, integrando modelos de linguagem para ler documentos e automatizar tarefas. A revisão e a decisão final sobre o código são minhas.",
@@ -108,6 +108,7 @@
     "education": {
       "eyebrow": "Formação",
       "title": "Formação acadêmica",
+      "certificates": "Ver certificados",
       "items": {
         "unipe": {
           "degree": "Formado em Sistemas para Internet",
@@ -122,14 +123,14 @@
         "devquest": {
           "degree": "DevQuest · Desenvolvimento web full stack",
           "school": "Dev em Dobro",
-          "period": "Curso"
+          "period": "Front-end e Back-end · 2025–2026"
         }
       }
     },
     "skills": {
       "eyebrow": "Competências",
       "title": "Tecnologias que uso",
-      "description": "Agrupadas por finalidade, sem barras de porcentagem: o nível de cada uma aparece nos projetos.",
+      "description": "Agrupadas por finalidade. A profundidade em cada uma aparece nos projetos.",
       "groups": {
         "languages": "Linguagens",
         "frontend": "Front-end",
@@ -143,7 +144,7 @@
   "projects": {
     "eyebrow": "Projetos",
     "title": "Projetos que mostram como eu construo software.",
-    "description": "Ordenados por relevância. Os dois primeiros são aplicações completas; os demais são testes técnicos, APIs e trabalhos acadêmicos com código aberto.",
+    "description": "Ordenados por relevância. Os dois primeiros são aplicações completas; os demais são testes técnicos, uma landing page, APIs e trabalhos acadêmicos, todos com código aberto.",
     "featuredLabel": "Em destaque",
     "othersTitle": "Outros projetos",
     "moreTitle": "Mais no GitHub",
@@ -153,7 +154,6 @@
       "code": "Código",
       "apiCode": "Código da API",
       "private": "Código privado",
-      "demoAccess": "Acesso de demonstração",
       "highlights": "Destaques",
       "stack": "Stack",
       "imageAlt": "Captura de tela do projeto {name}"
@@ -180,7 +180,7 @@
       "mfrp": {
         "title": "MFRP · Gestão de lanchonete",
         "tagline": "Sistema de pedidos, caixa e administração para uma lanchonete.",
-        "description": "Aplicação autenticada para gerenciar pedidos, controlar o caixa e administrar o negócio em um painel próprio. O código é privado, mas a aplicação pode ser testada com o acesso de demonstração.",
+        "description": "Aplicação autenticada para gerenciar pedidos, controlar o caixa e administrar o negócio em um painel próprio. O código é privado e o acesso é restrito aos usuários da lanchonete.",
         "highlights": {
           "h1": "Gerenciamento de pedidos e controle de caixa em um único painel administrativo.",
           "h2": "Interface construída com Next.js e componentes acessíveis do Radix UI.",

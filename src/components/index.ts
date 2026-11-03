@@ -12,6 +12,7 @@ export { ProjectLinks } from "./Project/ProjectLinks";
 export { ProjectRow } from "./Project/ProjectRow";
 export { Providers } from "./Providers";
 export { Reveal, revealEase } from "./Reveal";
+export { Rise, riseDelay } from "./Rise";
 export { Eyebrow, SectionHeading } from "./SectionHeading";
 export { ScrollProgress } from "./ScrollProgress";
 export { SkipLink } from "./SkipLink";

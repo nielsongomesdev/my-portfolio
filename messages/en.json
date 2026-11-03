@@ -61,8 +61,8 @@
   },
   "about": {
     "eyebrow": "About me",
-    "title": "Full Stack Developer in the TypeScript ecosystem, focused on clean code, security and maintainability.",
-    "lead": "Graduated in Internet Systems from Unipê and currently pursuing a bachelor's degree in Software Engineering. I develop and maintain internal corporate systems at Bloco Construções, taking part in the whole cycle: requirements gathering with business teams, database modeling, REST APIs and interfaces, testing and deployment.",
+    "title": "Full Stack Developer in the TypeScript ecosystem.",
+    "lead": "Graduated in Internet Systems from Unipê and currently pursuing a bachelor's degree in Software Engineering. Today I develop and maintain the internal systems at Bloco Construções, following each solution from requirements gathering to its evolution in production.",
     "paragraphs": {
       "p1": "On the front end, I turn high-fidelity prototypes into reusable, typed and responsive components with React, Next.js and TypeScript. On the back end, I structure layered REST APIs with Node.js, model PostgreSQL and Supabase databases and implement authentication, permission control and Row Level Security policies.",
       "p2": "I use AI both in development, to speed up testing, refactoring and debugging, and in products, integrating language models to read documents and automate tasks. Review and final decisions about the code are mine.",
@@ -108,6 +108,7 @@
     "education": {
       "eyebrow": "Education",
       "title": "Academic background",
+      "certificates": "View certificates",
       "items": {
         "unipe": {
           "degree": "Graduated in Internet Systems",
@@ -122,14 +123,14 @@
         "devquest": {
           "degree": "DevQuest · Full stack web development",
           "school": "Dev em Dobro",
-          "period": "Course"
+          "period": "Front-end and Back-end · 2025–2026"
         }
       }
     },
     "skills": {
       "eyebrow": "Skills",
       "title": "Technologies I use",
-      "description": "Grouped by purpose, with no percentage bars: the depth of each one shows in the projects.",
+      "description": "Grouped by purpose. The depth in each one shows in the projects.",
       "groups": {
         "languages": "Languages",
         "frontend": "Front-end",
@@ -143,7 +144,7 @@
   "projects": {
     "eyebrow": "Projects",
     "title": "Projects that show how I build software.",
-    "description": "Ordered by relevance. The first two are complete applications; the rest are technical tests, APIs and academic work with open source code.",
+    "description": "Ordered by relevance. The first two are complete applications; the rest are technical tests, a landing page, APIs and academic work, all with open source code.",
     "featuredLabel": "Featured",
     "othersTitle": "Other projects",
     "moreTitle": "More on GitHub",
@@ -153,7 +154,6 @@
       "code": "Code",
       "apiCode": "API code",
       "private": "Private code",
-      "demoAccess": "Demo access",
       "highlights": "Highlights",
       "stack": "Stack",
       "imageAlt": "Screenshot of the {name} project"
@@ -180,7 +180,7 @@
       "mfrp": {
         "title": "MFRP · Snack bar management",
         "tagline": "Orders, cash register and admin system for a snack bar.",
-        "description": "Authenticated application to manage orders, control the cash register and run the business from its own admin panel. The code is private, but the app can be tested with the demo access.",
+        "description": "Authenticated application to manage orders, control the cash register and run the business from its own admin panel. The code is private and access is restricted to the snack bar's users.",
         "highlights": {
           "h1": "Order management and cash control in a single admin panel.",
           "h2": "Interface built with Next.js and accessible Radix UI components.",
