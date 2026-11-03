@@ -21,7 +21,6 @@ export type Project = {
   githubUrl?: string;
   apiGithubUrl?: string;
   image?: { src: string; width: number; height: number };
-  demoCredentials?: string;
 };
 
 export const projects: Project[] = [
@@ -55,7 +54,6 @@ export const projects: Project[] = [
     highlights: 3,
     liveUrl: "https://mfrp-ten.vercel.app/login",
     image: { src: "/mfrp.png", width: 1341, height: 622 },
-    demoCredentials: "admin / Admin123@",
   },
   {
     key: "githubSearch",

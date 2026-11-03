@@ -1,14 +1,18 @@
-import { Briefcase, GraduationCap, Languages, MapPin } from "lucide-react";
+import { ArrowUpRight, Briefcase, GraduationCap, Languages, MapPin } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { Eyebrow, ProfilePhoto, Reveal, SectionHeading, TechList } from "@/components";
-import { skillGroups } from "@/data";
+import { Eyebrow, ProfilePhoto, Reveal, Rise, SectionHeading, TechList } from "@/components";
+import { site, skillGroups } from "@/data";
 
 const experienceItems = [
   { key: "bloco", bullets: 5, current: true },
   { key: "unipe", bullets: 4, current: false },
 ] as const;
 
-const educationItems = ["unipe", "descomplica", "devquest"] as const;
+const educationItems = [
+  { key: "unipe" },
+  { key: "descomplica" },
+  { key: "devquest", href: site.certificates },
+] as const;
 
 const facts = [
   { labelKey: "facts.locationLabel", valueKey: "facts.location", icon: MapPin },
@@ -19,30 +23,31 @@ const facts = [
 export function About() {
   const t = useTranslations("about");
   const th = useTranslations("hero");
+  const tc = useTranslations("common");
 
   return (
     <>
       <section>
         <div className="container-page grid gap-12 py-16 sm:py-20 lg:grid-cols-12 lg:gap-10 lg:py-28">
           <div className="flex flex-col gap-8 lg:col-span-7">
-            <Reveal className="flex items-center gap-4">
+            <Rise className="flex items-center gap-4">
               <ProfilePhoto alt={th("photoAlt")} variant="avatar" className="size-16" priority />
               <Eyebrow>{t("eyebrow")}</Eyebrow>
-            </Reveal>
-            <Reveal delay={0.06}>
+            </Rise>
+            <Rise step={1}>
               <SectionHeading as="h1" size="page" title={t("title")} />
-            </Reveal>
-            <Reveal delay={0.12}>
+            </Rise>
+            <Rise step={2}>
               <p className="max-w-[62ch] text-lg leading-relaxed text-fg text-pretty">{t("lead")}</p>
-            </Reveal>
-            <Reveal delay={0.18} className="flex max-w-[62ch] flex-col gap-4 text-base leading-relaxed text-fg-muted">
+            </Rise>
+            <Rise step={3} className="flex max-w-[62ch] flex-col gap-4 text-base leading-relaxed text-fg-muted">
               <p>{t("paragraphs.p1")}</p>
               <p>{t("paragraphs.p2")}</p>
               <p>{t("paragraphs.p3")}</p>
-            </Reveal>
+            </Rise>
           </div>
 
-          <Reveal delay={0.2} className="lg:col-span-4 lg:col-start-9">
+          <Rise step={3} className="lg:col-span-4 lg:col-start-9">
             <dl
               data-spotlight=""
               className="flex flex-col divide-y divide-border rounded-2xl border border-border bg-bg-elevated"
@@ -55,7 +60,7 @@ export function About() {
                 </div>
               ))}
             </dl>
-          </Reveal>
+          </Rise>
         </div>
       </section>
 
@@ -109,9 +114,9 @@ export function About() {
           </Reveal>
 
           <ul className="grid gap-4 lg:col-span-8 md:grid-cols-3">
-            {educationItems.map((key, index) => (
+            {educationItems.map((item, index) => (
               <Reveal
-                key={key}
+                key={item.key}
                 as="li"
                 spotlight
                 delay={index * 0.08}
@@ -119,10 +124,24 @@ export function About() {
               >
                 <GraduationCap size={20} aria-hidden="true" className="text-accent" />
                 <div className="flex flex-col gap-1">
-                  <h3 className="font-semibold tracking-tight">{t(`education.items.${key}.degree`)}</h3>
-                  <p className="text-sm text-fg-muted">{t(`education.items.${key}.school`)}</p>
+                  <h3 className="font-semibold tracking-tight">{t(`education.items.${item.key}.degree`)}</h3>
+                  <p className="text-sm text-fg-muted">{t(`education.items.${item.key}.school`)}</p>
                 </div>
-                <p className="mt-auto font-mono text-xs text-fg-subtle">{t(`education.items.${key}.period`)}</p>
+                <div className="mt-auto flex flex-wrap items-center justify-between gap-x-4 gap-y-2 font-mono text-xs">
+                  <p className="text-fg-subtle">{t(`education.items.${item.key}.period`)}</p>
+                  {"href" in item && (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-fg-muted transition-colors hover:text-fg"
+                    >
+                      {t("education.certificates")}
+                      <span className="sr-only"> ({tc("newTab")})</span>
+                      <ArrowUpRight size={13} aria-hidden="true" />
+                    </a>
+                  )}
+                </div>
               </Reveal>
             ))}
           </ul>

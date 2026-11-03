@@ -9,12 +9,19 @@ type ProjectCardProps = {
   project: Project;
   layout?: "featured" | "secondary";
   headingLevel?: "h2" | "h3";
+  priority?: boolean;
   className?: string;
 };
 
 const labelClass = "font-mono text-xs font-medium uppercase tracking-[0.18em] text-fg-subtle";
 
-export function ProjectCard({ project, layout = "featured", headingLevel = "h3", className }: ProjectCardProps) {
+export function ProjectCard({
+  project,
+  layout = "featured",
+  headingLevel = "h3",
+  priority = false,
+  className,
+}: ProjectCardProps) {
   const t = useTranslations("projects");
   const item = `items.${project.key}` as const;
   const title = t(`${item}.title`);
@@ -44,6 +51,7 @@ export function ProjectCard({ project, layout = "featured", headingLevel = "h3",
             alt={t("labels.imageAlt", { name: title })}
             fill
             sizes={isFeatured ? "(min-width: 1152px) 1120px, 100vw" : "(min-width: 1024px) 560px, 100vw"}
+            priority={priority}
             className="object-cover object-top brightness-[0.82] saturate-[0.9] transition-[transform,filter] duration-700 ease-out-expo group-hover:scale-[1.03] group-hover:brightness-100 group-hover:saturate-100"
           />
           <span

@@ -1,7 +1,7 @@
 import { FileText, Mail, MapPin } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
-import { Reveal, SectionHeading } from "@/components";
+import { Rise, SectionHeading } from "@/components";
 import { site } from "@/data";
 import { ContactForm } from "./ContactForm";
 
@@ -16,7 +16,7 @@ export function Contact() {
     <section>
       <div className="container-page grid gap-12 py-16 sm:py-20 lg:grid-cols-12 lg:gap-16 lg:py-24">
         <div className="flex flex-col gap-10 lg:col-span-5">
-          <Reveal>
+          <Rise>
             <SectionHeading
               as="h1"
               size="page"
@@ -24,9 +24,9 @@ export function Contact() {
               title={t("title")}
               description={t("description")}
             />
-          </Reveal>
+          </Rise>
 
-          <Reveal delay={0.1} className="flex flex-col gap-3">
+          <Rise step={1} className="flex flex-col gap-3">
             <h2 className="font-mono text-xs font-medium uppercase tracking-[0.18em] text-fg-subtle">
               {t("channelsTitle")}
             </h2>
@@ -76,12 +76,12 @@ export function Contact() {
                 <span className="font-mono text-xs text-fg-subtle">{tc("location")}</span>
               </li>
             </ul>
-          </Reveal>
+          </Rise>
         </div>
 
-        <Reveal delay={0.15} className="lg:col-span-7">
+        <Rise step={2} className="lg:col-span-7">
           <ContactForm />
-        </Reveal>
+        </Rise>
       </div>
     </section>
   );
